@@ -3,7 +3,7 @@ private ["_toClipboard","_toLogfile","_start","_mapSize","_center","_radius","_b
 
 _mapSize = getNumber(configFile >> "CfgWorlds" >> worldName >> "MapSize");
 _center = [(_mapSize/2), (_mapSize/2), 0];
-_radius = [0,0,0] distance _center;
+_radius = [0,0,0] distance2D _center;
 _buildings = [];
 _locations = createHashMap;
 {
@@ -14,15 +14,15 @@ _locations = createHashMap;
 	_locations set [_index, [_rounded_x, _rounded_y]];
 	_buildings pushBack [typeOf _x, getPos _x];
 }forEach (_center nearObjects ["Building", _radius]);
-_markers = [];
+markers = [];
 {
 	_mark = createMarker[_x, _y];
-	_mark setMarkerColor "ColorRed";
+	_mark setMarkerColor "ColorBlue";
 	_mark setMarkerShape "RECTANGLE";
 	_mark setMarkerBrush "Solid";
 	_mark setMarkerAlpha 0.5;
 	_mark setMarkerSize [50,50];
-	_markers pushBack _mark;	
+	markers pushBack _mark;	
 } forEach _locations;
 
 
@@ -31,26 +31,24 @@ _markers = [];
 _getNearbyMarkers = {
 	params ["_marker","_tgt","_markers","_trail", "_distanceLimit"];
 	_markersFiltered = [];
-	_currentDist = (getMarkerPos _marker) distance (getMarkerPos _tgt);
+	_currentDist = (getMarkerPos _marker) distance2D (getMarkerPos _tgt);
 	{
 		
-		if(_x in _trail) then {
-				
-		} else {
-			if((getMarkerPos _x) distance (getMarkerPos _tgt) < _currentDist) then {
+		if(_trail find _x == -1 ) then {
+			if((getMarkerPos _x) distance2D (getMarkerPos _tgt) < _currentDist) then {
 				_markersFiltered pushBack _x;
 			}
 		}
 		
 	} forEach  _markers;
 
-	_markersFiltered select {(getMarkerPos _x) distance (getMarkerPos _marker) < _distanceLimit}
+	_markersFiltered select {(getMarkerPos _x) distance2D (getMarkerPos _marker) < _distanceLimit}
 };
 
 
 _getNextPos = {
 	params ["_target","_marker", "_markers"];
-	_localPos = [_markers, [getMarkerPos _target], {(getMarkerPos _x) distance _input0 }, "ASCEND"] call BIS_fnc_sortBy;
+	_localPos = [_markers, [getMarkerPos _target], {(getMarkerPos _x) distance2D _input0 }, "ASCEND"] call BIS_fnc_sortBy;
 
 	_localPos select 0
 };
@@ -58,11 +56,11 @@ _getNextPos = {
 private _tgt = "CAPITAL_BASE";
 private _loc = "VC_base";
 private _trail = [_loc];
-while {(getMarkerPos _tgt) distance (getMarkerPos _loc) > 200} do {
+while {(getMarkerPos _tgt) distance2D (getMarkerPos _loc) > 200} do {
 	_opts = [];
 	_distanceLimit = 110;
 	while {count _opts == 0} do {
-		_opts = [_loc, _tgt,  _markers, _trail, _distanceLimit] call _getNearbyMarkers;
+		_opts = [_loc, _tgt,  markers, _trail, _distanceLimit] call _getNearbyMarkers;
 		_distanceLimit = _distanceLimit + 110;
 	};
 	_newLoc = [_tgt, _loc, _opts] call _getNextPos;	
@@ -73,52 +71,96 @@ while {(getMarkerPos _tgt) distance (getMarkerPos _loc) > 200} do {
       ["color", "ColorRed"],
       ["size", 10]
    ] execVM "drawLine.sqf"; 
-	_newLoc setMarkerColor "ColorYellow";
+	_newLoc setMarkerColor "ColorRed";
 	_loc = _newLoc;
 };
 
 
 ////////////////////////////////////////////// APPLY TRAIL AOE /////////////////////////////////////////////////
 
-_getAjacentMarkers = {
+getAjacentMarkers = {
 	params ["_marker","_markers","_excluded", "_distanceLimit"];
 	_markersFiltered = [];
 
 	{
 		
-		if(_x in _excluded) then {
-				
-		} else {
+		if(_excluded find _x == -1 ) then {
 			_markersFiltered pushBack _x;
 		}
 		
 	} forEach  _markers;
-
-	_markersFiltered select {(getMarkerPos _x) distance (getMarkerPos _marker) < _distanceLimit}
+	if(typeName _marker == "STRING") then {
+		_markersFiltered select {(getMarkerPos _x) distance2D (getMarkerPos _marker) < _distanceLimit}
+	} else {
+		_markersFiltered select {(getMarkerPos _x) distance2D _marker < _distanceLimit}
+	};
 };
 
-_allAoeMarkers = [];
-_aoeMarkers = [];
-{
-	// Current result is saved in variable _x
-	_opts = [_x, _markers, _trail + _allAoeMarkers, 200] call _getAjacentMarkers;
+generateAOE = {
+	params ["_positions","_markers","_potency", "_color", "_ignoredColors"];
+	_allEffectedMarkers = [];
+	_effecttedMarkers = [];
 	{
-		_x setMarkerColor "ColorGreen";
-		_aoeMarkers pushBack _x;
-	} forEach _opts;
-} forEach _trail;
-_allAoeMarkers = _aoeMarkers;
-
-for "_i" from 1 to 5 do {
-	_newAoeMarkers = [];
-	{
-		// Current result is saved in variable _x
-		_opts = [_x, _markers, _trail + _allAoeMarkers, 110] call _getAjacentMarkers;
+		_opts = [_x, _markers, _positions + _allEffectedMarkers, 200] call getAjacentMarkers;
 		{
-			_x setMarkerColor "ColorGreen";
-			_newAoeMarkers pushBack _x;
+			if(_ignoredColors find getMarkerColor _x  == -1) then {
+				_x setMarkerColor _color;
+				_effecttedMarkers pushBack _x;
+			}
 		} forEach _opts;
-	} forEach _aoeMarkers;
-	_allAoeMarkers = _allAoeMarkers + _newAoeMarkers;
-	_aoeMarkers = _newAoeMarkers;
- };
+	} forEach _positions;
+	_allEffectedMarkers = _effecttedMarkers;
+
+	for "_i" from 1 to _potency do {
+		_neweffecttedMarkers = [];
+		{
+			_opts = [_x, _markers, _positions + _allEffectedMarkers, 110] call getAjacentMarkers;
+			{
+				if(_ignoredColors find getMarkerColor _x  == -1) then {
+					_x setMarkerColor _color;
+					_neweffecttedMarkers pushBack _x;
+				}	
+			} forEach _opts;
+		} forEach _effecttedMarkers;
+		_allEffectedMarkers = _allEffectedMarkers + _neweffecttedMarkers;
+		_effecttedMarkers = _neweffecttedMarkers;
+	};
+};
+
+[_trail, markers, 5, "ColorOpfor", []] spawn generateAOE;
+//Food AOE
+// [[player], markers, 3, "ColorGreen",["ColorRed", "ColorOpfor"]] spawn generateAOE;
+//Aid AOE
+// [[player], markers, 3, "ColorGreen",["ColorRed", "ColorOpfor", "ColorBlue"]] spawn generateAOE;
+
+
+
+////////////////////////////////////////////// INTEL /////////////////////////////////////////////////
+
+//HIDE ALL MARKERS TEMP
+//  {
+// 	_x setMarkerAlpha 0;
+//  } foreach _markers;
+
+_liseningDevice = {
+	params ["_veh","_markers","_range"];
+	_sleepTime = 10;
+	while {alive _veh} do {
+		sleep _sleepTime;
+		if(speed _veh > 10) then {
+			_sleepTime = 1;	
+		} else {
+			_sleepTime = 10;
+		};
+		_markersFiltered = _markers select {(getMarkerPos _x) distance2D _veh < _range};
+		//TODO: FILTER BY LOS
+		{
+			_alpha =  (1 - (((getMarkerPos _x) distance2D _veh)/_range));
+			_x setMarkerAlpha _alpha;
+		} forEach _markersFiltered;
+	};
+};
+
+[helo, markers, 2000] spawn _liseningDevice;
+
+[player, markers, 200] spawn _liseningDevice;

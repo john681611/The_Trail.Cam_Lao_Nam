@@ -8,18 +8,18 @@ class EditorData
 	toggles=1;
 	class ItemIDProvider
 	{
-		nextID=11;
+		nextID=13;
 	};
 	class MarkerIDProvider
 	{
-		nextID=8;
+		nextID=9;
 	};
 	class Camera
 	{
-		pos[]={17117.689,15.754586,9756.4639};
-		dir[]={-0.86779147,-0.42070049,-0.26447931};
-		up[]={-0.40242556,0.90719956,-0.1226484};
-		aside[]={-0.29153377,0,0.95656067};
+		pos[]={17128.428,31.105217,9766.9834};
+		dir[]={-0.6480692,-0.67915428,-0.34460968};
+		up[]={-0.599648,0.7339955,-0.31886178};
+		aside[]={-0.46949831,0,0.88293338};
 	};
 };
 binarizationWanted=0;
@@ -28,13 +28,14 @@ addons[]=
 {
 	"characters_f_vietnam_c",
 	"objects_f_vietnam_c",
-	"A3_Ui_F"
+	"A3_Ui_F",
+	"air_f_vietnam_c"
 };
 class AddonsMetaData
 {
 	class List
 	{
-		items=3;
+		items=4;
 		class Item0
 		{
 			className="characters_f_vietnam_c";
@@ -54,6 +55,13 @@ class AddonsMetaData
 			className="A3_Ui_F";
 			name="Arma 3 - User Interface";
 			author="Bohemia Interactive";
+			url="https://www.arma3.com";
+		};
+		class Item3
+		{
+			className="air_f_vietnam_c";
+			name="air_f_vietnam_c";
+			author="Savage Game Design";
 			url="https://www.arma3.com";
 		};
 	};
@@ -89,7 +97,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=10;
+		items=11;
 		class Item0
 		{
 			dataType="Group";
@@ -214,6 +222,22 @@ class Mission
 			name="CAPITAL_BASE";
 			type="vn_flag_arvn";
 			id=10;
+		};
+		class Item10
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={17117.438,14.711936,9749.8486};
+			};
+			side="Empty";
+			flags=4;
+			class Attributes
+			{
+				name="helo";
+			};
+			id=11;
+			type="vn_b_air_oh6a_02";
 		};
 	};
 	class Connections
