@@ -1,9 +1,10 @@
-
-briefingName = "Resistance 3.7.1";
-onLoadName = "Resistance 3.7.1";
-overviewText = "Resistance, gather what you can to take back your land";
+#include "Modules\outlw_magRepack\MagRepack_config.hpp"
+#include "Modules\CHVD\dialog.hpp"
+briefingName = "The Trail 0.0.1";
+onLoadName = "The Trail 0.0.1";
+overviewText = "The Trail 0.0.1";
 author = "INF_Mike64 Inspired by Kitch";
-onLoadMission = "Resistance, gather what you can to take back your land";
+onLoadMission = "The Trail 0.0.1";
 // loadScreen = "resistance_ingame_logo.paa";
 disabledAI = 1;
 enableDebugConsole = 1;
@@ -40,10 +41,11 @@ class Header
 	maxPlayers = 33;
 };
 
-// class CfgFunctions
-// {
-// 	#include "CHVD\CfgFunctions.hpp"
-// };
+class CfgFunctions
+{
+	#include "Modules\CHVD\CfgFunctions.hpp"
+	#include "Functions\CfgFunctions.hpp"
+};
 
 class Params
 {
