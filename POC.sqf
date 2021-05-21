@@ -20,13 +20,15 @@ if(count (keys _cache) == 0) then { //CLEAR OVERIDE NEEDED
 
 markers = [];
 {
-	_mark = createMarker[_x, _y];
-	_mark setMarkerColor "ColorBlue";
-	_mark setMarkerShape "RECTANGLE";
-	_mark setMarkerBrush "Solid";
-	_mark setMarkerAlpha 0.5; 
-	_mark setMarkerSize [50,50];
-	markers pushBack _mark;	
+	if!(_y inArea safezone) then {
+		_mark = createMarker[_x, _y];
+		_mark setMarkerColor "ColorBlue";
+		_mark setMarkerShape "RECTANGLE";
+		_mark setMarkerBrush "Solid";
+		_mark setMarkerAlpha 0.5; 
+		_mark setMarkerSize [50,50];
+		markers pushBack _mark;
+	}
 } forEach _locations;
 
 
@@ -186,7 +188,7 @@ _liseningDevice = {
 	};
 };
 
-[helo, markers, 2000] spawn _liseningDevice;
+// [helo, markers, 2000] spawn _liseningDevice;
 
 [player, markers, 200] spawn _liseningDevice;
 

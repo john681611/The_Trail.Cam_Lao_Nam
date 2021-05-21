@@ -8,18 +8,18 @@ class EditorData
 	toggles=1;
 	class ItemIDProvider
 	{
-		nextID=27;
+		nextID=29;
 	};
 	class MarkerIDProvider
 	{
-		nextID=9;
+		nextID=10;
 	};
 	class Camera
 	{
-		pos[]={17155.125,65.013878,9776.6406};
-		dir[]={-0.6480692,-0.67915422,-0.34460971};
-		up[]={-0.59964794,0.73399568,-0.31886178};
-		aside[]={-0.46949834,0,0.88293338};
+		pos[]={15812.607,39.98,7062.8721};
+		dir[]={-1.2363449e-007,-0.70710683,0.70710683};
+		up[]={-1.2363449e-007,0.70710671,0.70710683};
+		aside[]={1,0,1.7484557e-007};
 	};
 };
 binarizationWanted=0;
@@ -28,14 +28,13 @@ addons[]=
 {
 	"characters_f_vietnam_c",
 	"objects_f_vietnam_c",
-	"A3_Ui_F",
-	"air_f_vietnam_c"
+	"A3_Ui_F"
 };
 class AddonsMetaData
 {
 	class List
 	{
-		items=4;
+		items=3;
 		class Item0
 		{
 			className="characters_f_vietnam_c";
@@ -55,13 +54,6 @@ class AddonsMetaData
 			className="A3_Ui_F";
 			name="Arma 3 - User Interface";
 			author="Bohemia Interactive";
-			url="https://www.arma3.com";
-		};
-		class Item3
-		{
-			className="air_f_vietnam_c";
-			name="air_f_vietnam_c";
-			author="Savage Game Design";
 			url="https://www.arma3.com";
 		};
 	};
@@ -97,7 +89,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=11;
+		items=12;
 		class Item0
 		{
 			dataType="Group";
@@ -110,7 +102,7 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={17115.34,12.361439,9754.3984};
+						position[]={15753.35,14.981439,7074.7007};
 					};
 					side="West";
 					flags=7;
@@ -225,19 +217,25 @@ class Mission
 		};
 		class Item10
 		{
-			dataType="Object";
-			class PositionInfo
-			{
-				position[]={17117.438,14.711936,9749.8486};
-			};
-			side="Empty";
-			flags=4;
+			dataType="Trigger";
+			position[]={16504.113,14.98,7031.6128};
 			class Attributes
 			{
-				name="helo";
+				name="safezone";
+				sizeA=1382.6219;
+				sizeB=803.23999;
+				sizeC=0;
 			};
-			id=11;
-			type="vn_b_air_oh6a_02";
+			id=27;
+			type="EmptyDetectorAreaR250";
+		};
+		class Item11
+		{
+			dataType="Marker";
+			position[]={15743.303,14.98,7094.604};
+			name="respawn_west";
+			type="b_hq";
+			id=28;
 		};
 	};
 	class Connections
