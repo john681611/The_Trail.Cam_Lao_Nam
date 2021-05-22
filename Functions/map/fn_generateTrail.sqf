@@ -29,7 +29,7 @@ _capTime = 0.1;
 _searchTime = 0.1;
 _maxJump = 2000;
 trailState = "building";
-while {(getMarkerPos tgt) distance2D (getMarkerPos _loc) > 200 and trailState == "building"} do {
+while {(getMarkerPos tgt) distance2D (getMarkerPos _loc) > 750 and trailState == "building"} do {
 	_opts = [];
 	_distanceLimit = 110;
 	while {count _opts == 0} do {
@@ -42,8 +42,7 @@ while {(getMarkerPos tgt) distance2D (getMarkerPos _loc) > 200 and trailState ==
 
 	};
 	if(trailState == "abandoned") exitWith {
-		//TODO kick off final AO to mission complete.
-		"VC_base" setMarkerAlpha 1;
+		[] spawn TR_fnc_spawnAttack;
 	};
 	_newLoc = [tgt, _loc, _opts] call _getNextPos;
 	if(getMarkerColor _newLoc == "colorGreen") then {
@@ -70,8 +69,7 @@ if(trailState == "building") then {
 	trailState = "supplying";
 	sleep 3;
 	if(trailState == "supplying") then {
-		trailState = "attacking";
-		//TODO kick off defend mode;
+		[] spawn TR_fnc_spawnDefend;
 	};
 } else {
 	sleep 3;

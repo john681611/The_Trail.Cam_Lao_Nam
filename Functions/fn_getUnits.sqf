@@ -4,7 +4,7 @@ params ["_faction", "_type"];
 // Call ([_faction, _type] call AW_fnc_getUnits)
 // Format Faction Hash => Type Hash => Unit/Group Array
 private _unitMap = createHashMapFromArray ([
-	["OPF_F", createHashMapFromArray [
+	["VC", createHashMapFromArray [
 		["MBT",[
 			"O_MBT_02_cannon_F",.2,
 			"O_MBT_04_cannon_F",.1,
@@ -12,7 +12,6 @@ private _unitMap = createHashMapFromArray ([
 			]
 		],
 		["AAA",["O_APC_Tracked_02_AA_F",1]],
-		["Arty",["O_MBT_02_arty_F",1]],
 		["IFV",[
 			"O_APC_Wheeled_02_rcws_F",.5,
 			"O_APC_Tracked_02_cannon_F",.5
@@ -48,39 +47,6 @@ private _unitMap = createHashMapFromArray ([
 			(configFile >> "CfgGroups" >> "East" >> "OPF_F" >> "SpecOps" >> "OI_ViperTeam"),.2
 			]
 		],
-		["officer", [
-			"O_officer_F",.1,
-			"O_Officer_Parade_F",.1,
-			"O_Officer_Parade_Veteran_F",.1
-			]
-		],
-		["helis",[
-			"O_Heli_Attack_02_dynamicLoadout_F",.1,
-			"O_T_VTOL_02_infantry_dynamicLoadout_F",.3,
-			"O_Heli_Light_02_dynamicLoadout_F",.3
-			]
-		],
-		["helisTransport",[
-			"O_Heli_Attack_02_dynamicLoadout_F", .25,
-			"O_T_VTOL_02_infantry_dynamicLoadout_F", .25,
-			"O_Heli_Light_02_dynamicLoadout_F", .25,
-			"I_Heli_light_03_dynamicLoadout_F", .25,
-			"I_Heli_Transport_02_F", 1,
-			"O_Heli_Light_02_unarmed_F", 1,
-			"I_Heli_light_03_unarmed_F", 1,
-			"I_Heli_Transport_02_F", 1,
-			"O_Heli_Transport_04_bench_F", 1,
-			"O_Heli_Transport_04_covered_F", 1
-			]
-		],
-		["jet",[
-			"O_Plane_CAS_02_dynamicLoadout_F",.1,
-			"O_Plane_CAS_02_Cluster_F",.1,
-    		"O_Plane_Fighter_02_F",.1,
-			"O_Plane_Fighter_02_Cluster_F",.1,
-			"O_Plane_Fighter_02_Stealth_F",.1
-			]
-		],
 		["turret",[
 			"O_HMG_01_high_F",.2,
 			"O_Mortar_01_F",.1,
@@ -89,7 +55,7 @@ private _unitMap = createHashMapFromArray ([
 		]]
 		]
 	]
-] + customUnitConfig);
+]);
 
 
 ((_unitMap get _faction) get _type) call BIS_fnc_selectRandomWeighted;
