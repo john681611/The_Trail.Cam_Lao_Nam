@@ -1,4 +1,4 @@
-trailState = "supplying";
+trailState = "attacking";
 private _faction = selectRandom factions;
 private _playerCount = (count allPlayers) min 8;
 private _forceConfig = createHashMapFromArray [
@@ -11,10 +11,12 @@ private _forceConfig = createHashMapFromArray [
 		["mainGroup", _playerCount],
 		["Car", _playerCount]
 		];
-private _spawnedUnits = ["VC_base", 750, _forceConfig, _faction, false] call TR_fnc_spawnForce;
-
+private _spawnedUnits = ["CAPITAL_BASE", 750, _forceConfig, _faction, false] call TR_fnc_spawnForce;
+sleep 30;
 
 //Only allow spawn at base or City
-waitUntil {sleep 5; {alive _x} count _spawnedUnits < 10 };
-
+_triggerCount =  3 max floor ((count _spawnedUnits)/10);
+waitUntil {sleep 5; {alive _x} count _spawnedUnits < _triggerCount};
+hint "attack over";
 trailState = "supplying";
+[] spawn TR_fnc_generateTrail;

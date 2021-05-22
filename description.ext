@@ -3,7 +3,7 @@
 briefingName = "The Trail 0.0.1";
 onLoadName = "The Trail 0.0.1";
 overviewText = "The Trail 0.0.1";
-author = "INF_Mike64 Inspired by Kitch";
+author = "INF_Mike64";
 onLoadMission = "The Trail 0.0.1";
 // loadScreen = "resistance_ingame_logo.paa";
 disabledAI = 1;

@@ -1,4 +1,3 @@
-#include "script_component.hpp"
 /* ----------------------------------------------------------------------------
 Function: CBA_fnc_taskAttack
 Description:
@@ -23,17 +22,19 @@ params ["_group", "_position", ["_radius", -1], ["_override", false]];
 
 if !(local _group) exitWith {}; // Don't create waypoints on each machine
 
-// Allow TaskAttack to override other set waypoints
-if (_override) then {
-    // Clear existing waypoints first
-	private _waypoints = waypoints _group;
-	{
-		deleteWaypoint [_group, 0];
-	} forEach _waypoints;
-
-    {
-        _x enableAI "PATH";
-    } forEach units _group;
+if(_position select 2 == 0) then {
+    _position set [2, getTerrainHeightASL _position];
 };
 
-[_group, _position, _radius, "SAD", "COMBAT", "RED"] call CBAEXT_fnc_addWaypoint;
+// Clear existing waypoints first
+private _waypoints = waypoints _group;
+{
+    deleteWaypoint [_group, 0];
+} forEach _waypoints;
+
+{
+    _x enableAI "PATH";
+} forEach units _group;
+
+diag_log format ["%1", _position];
+[_group, _position, _radius, "SAD", "AWARE", "RED"] call CBAEXT_fnc_addWaypoint;

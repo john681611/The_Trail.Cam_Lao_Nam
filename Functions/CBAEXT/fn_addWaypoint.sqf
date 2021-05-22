@@ -39,8 +39,6 @@ params [
     ["_compRadius", 0, [0]]
 ];
 
-_position = getPos (leader _group);
-
 // addWaypoint expects ASL when a negative radius is provided for exact placement
 // otherwise waypoints will be placed under the ground
 if (_radius < 0) then {

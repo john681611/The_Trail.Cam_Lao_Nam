@@ -23,11 +23,11 @@ _getNextPos = {
 	_localPos select 0
 };
 
-private _loc = "VC_base";
+private _loc = trail select (count trail -1);
 tgt = "CAPITAL_BASE";
-_capTime = 0.1;
-_searchTime = 0.1;
-_maxJump = 2000;
+_capTime = 0;
+_searchTime = 0;
+_maxJump = 3000;
 trailState = "building";
 while {(getMarkerPos tgt) distance2D (getMarkerPos _loc) > 750 and trailState == "building"} do {
 	_opts = [];
@@ -42,7 +42,7 @@ while {(getMarkerPos tgt) distance2D (getMarkerPos _loc) > 750 and trailState ==
 
 	};
 	if(trailState == "abandoned") exitWith {
-		[] spawn TR_fnc_spawnAttack;
+		[] spawn TR_fnc_spawnAO;
 	};
 	_newLoc = [tgt, _loc, _opts] call _getNextPos;
 	if(getMarkerColor _newLoc == "colorGreen") then {
@@ -69,7 +69,7 @@ if(trailState == "building") then {
 	trailState = "supplying";
 	sleep 3;
 	if(trailState == "supplying") then {
-		[] spawn TR_fnc_spawnDefend;
+		[] spawn TR_fnc_spawnBastion;
 	};
 } else {
 	sleep 3;

@@ -4,7 +4,7 @@ description: Adds given param as an editable object to all curators
 */
 
 if (!isServer) exitWith {
-    _this remoteExec ["IA_fnc_addToAllCurators", 2];
+    _this remoteExec ["TR_fnc_addToAllCurators", 2];
 };
 
 params ["_toAdd"];

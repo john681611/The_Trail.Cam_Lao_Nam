@@ -5,11 +5,11 @@ private _AOPos = getMarkerPos _AOMarker;
 
 {
 	for "_i" from 1 to (_AOConfig getOrDefault [_X, 0]) do {
-		private _group = [_AOMarker,([_faction, _X] call TR_fnc_getUnits),_defend] call TR_fnc_spawnGroup;
+		private _group = [_AOMarker, _AORad,([_faction, _X] call TR_fnc_getUnits),_defend] call TR_fnc_spawnGroup;
 		if(_defend) then {
 			[_group, _AOPos , _AORad, 3, 0.1, 0.1, true] call CBAEXT_fnc_taskDefend;
 		} else {
-			[_group, _AOPos, 300] call CBAEXT_fnc_taskAttack;
+			[_group, _AOPos] call CBAEXT_fnc_taskAttack;
 		};
 		{
 			_spawnedUnits pushBack _x;
@@ -19,11 +19,11 @@ private _AOPos = getMarkerPos _AOMarker;
 
 {
 	for "_i" from 1 to (_AOConfig getOrDefault [_x, 0]) do {
-		private _group = [_AOMarker,([_faction, _x] call TR_fnc_getUnits),_defend] call TR_fnc_spawnGroup;
+		private _group = [_AOMarker, _AORad,([_faction, _x] call TR_fnc_getUnits),_defend] call TR_fnc_spawnGroup;
 		if(_defend) then {
 			[_group, _AOPos , _AORad] call CBAEXT_fnc_taskPatrol;
 		} else {
-			[_group, _AOPos, 300] call CBAEXT_fnc_taskAttack;
+			[_group, _AOPos] call CBAEXT_fnc_taskAttack;
 		};
 		{
 			_spawnedUnits pushBack _x;
@@ -33,11 +33,11 @@ private _AOPos = getMarkerPos _AOMarker;
 
 {
 	for "_i" from 1 to (_AOConfig getOrDefault [_x, 0]) do {
-		private _veh = [_AOMarker,([_faction, _x] call TR_fnc_getUnits),_defend] call TR_fnc_spawnVehicle;
+		private _veh = [_AOMarker, _AORad,([_faction, _x] call TR_fnc_getUnits),_defend] call TR_fnc_spawnVehicle;
 		if(_defend) then {
 			[group _veh,  _AOPos , _AORad, 5, "sad", "safe", "red", "limited"] call CBAEXT_fnc_taskPatrol;
 		} else {
-			[group _veh, _AOPos, 300] call CBAEXT_fnc_taskAttack;
+			[group _veh, _AOPos] call CBAEXT_fnc_taskAttack;
 		};
 		_spawnedUnits pushBack _veh;
 		{
@@ -48,7 +48,7 @@ private _AOPos = getMarkerPos _AOMarker;
 
 if(_defend) then {
 	for "_i" from 1 to (_AOConfig getOrDefault ["turret", 0]) do {
-		private _veh = [_AOMarker,([_faction, "turret"] call TR_fnc_getUnits)] call TR_fnc_spawnVehicle;
+		private _veh = [_AOMarker, _AORad,([_faction, "turret"] call TR_fnc_getUnits)] call TR_fnc_spawnVehicle;
 			_spawnedUnits pushBack _veh;
 		{
 			_spawnedUnits pushBack _x;
@@ -61,6 +61,6 @@ if(_defend) then {
 //TODO Helicopters and Jets
 
 
-[_spawnedUnits] remoteExec ["IA_fnc_addToAllCurators", 2];
+[_spawnedUnits] remoteExec ["TR_fnc_addToAllCurators", 2];
 
 _spawnedUnits;

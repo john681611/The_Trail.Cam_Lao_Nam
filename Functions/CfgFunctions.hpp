@@ -10,6 +10,7 @@ class IA
 		class getUnitsFromConfigGroup {};
 		class hideInBuilding {};
 		class spawnGroup {};
+		class spawnForce{};
 		class spawnUnit {};
 		class spawnVehicle {};
 		class teleport{};
@@ -27,7 +28,8 @@ class IA
 		class generateAOE{};
 		class initLiseningDevice{};
 		class combatLoop{};
-
+		class spawnAO{};
+		class spawnBastion{};
 	}
 
 
@@ -47,8 +49,9 @@ class CBAEXT
 	{
 		file = "Functions\CBAEXT";
 		class addWaypoint{};
-		class taskDefend {};
+		class taskDefend{};
 		class taskPatrol{};
+		class taskAttack{};
 
 	};
 };

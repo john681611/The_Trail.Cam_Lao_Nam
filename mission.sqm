@@ -8,18 +8,18 @@ class EditorData
 	toggles=1;
 	class ItemIDProvider
 	{
-		nextID=188;
+		nextID=195;
 	};
 	class MarkerIDProvider
 	{
-		nextID=11;
+		nextID=12;
 	};
 	class Camera
 	{
-		pos[]={15740.931,25.815496,7050.4473};
-		dir[]={-0.061905865,-0.37069646,0.92668861};
-		up[]={-0.024708677,0.92875403,0.36987206};
-		aside[]={0.99777603,0,0.066654742};
+		pos[]={15673.436,28.164282,7208.7339};
+		dir[]={0.80443519,-0.40097877,-0.43831766};
+		up[]={0.35210609,0.91608334,-0.19185458};
+		aside[]={-0.47846541,-8.0442987e-008,-0.87811893};
 	};
 };
 binarizationWanted=0;
@@ -35,13 +35,14 @@ addons[]=
 	"armor_f_vietnam_c",
 	"weapons_f_vietnam_c",
 	"structures_f_vietnam_c",
-	"modules_f_vietnam"
+	"modules_f_vietnam",
+	"A3_Modules_F_Curator_Curator"
 };
 class AddonsMetaData
 {
 	class List
 	{
-		items=10;
+		items=11;
 		class Item0
 		{
 			className="objects_f_vietnam_c";
@@ -112,11 +113,19 @@ class AddonsMetaData
 			author="Savage Game Design";
 			url="https://www.arma3.com";
 		};
+		class Item10
+		{
+			className="A3_Modules_F_Curator";
+			name="Arma 3 Zeus Update - Scripted Modules";
+			author="Bohemia Interactive";
+			url="https://www.arma3.com";
+		};
 	};
 };
 dlcs[]=
 {
-	"ORANGE"
+	"ORANGE",
+	"Heli"
 };
 randomSeed=11969967;
 class ScenarioData
@@ -145,13 +154,13 @@ class Mission
 	};
 	class Entities
 	{
-		items=42;
+		items=45;
 		class Item0
 		{
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={5885.1128,132.47388,16815.789};
+				position[]={5225.5571,101.96577,16858.898};
 			};
 			side="Empty";
 			flags=5;
@@ -174,66 +183,63 @@ class Mission
 		class Item1
 		{
 			dataType="Marker";
-			position[]={5903.8828,132.52299,16811.223};
+			position[]={5244.3271,103.33736,16854.332};
 			name="VC_base";
 			type="vn_flag_vc";
-			alpha=0;
 			id=3;
-			atlOffset=0.00044250488;
+			atlOffset=0.00043487549;
 		};
 		class Item2
 		{
 			dataType="Marker";
-			position[]={11747.257,39.914063,18520.293};
+			position[]={12001.215,28.069336,18330.469};
 			name="marker_1";
 			type="Empty";
 			id=4;
-			atlOffset=-20.012001;
+			atlOffset=-1.8606644;
 		};
 		class Item3
 		{
 			dataType="Marker";
-			position[]={2760.9412,106.50266,18320.176};
+			position[]={1684.4209,10.700051,19152.377};
 			name="marker_2";
 			type="Empty";
 			id=5;
-			atlOffset=-20.012001;
 		};
 		class Item4
 		{
 			dataType="Marker";
-			position[]={1989.7975,187.46585,13507.082};
+			position[]={2231.7209,173.06592,13413.859};
 			name="marker_3";
 			type="Empty";
 			id=6;
-			atlOffset=-20.011993;
+			atlOffset=-24.797699;
 		};
 		class Item5
 		{
 			dataType="Marker";
-			position[]={7151.4893,-2.3502541,8221.3867};
+			position[]={1468.8524,-2.3502502,9513.4873};
 			name="marker_4";
 			type="Empty";
 			id=7;
-			atlOffset=-20.012001;
+			atlOffset=-7.2951784;
 		};
 		class Item6
 		{
 			dataType="Marker";
-			position[]={12064.424,224.16235,15459.683};
+			position[]={9114.0703,308.19043,16286.422};
 			name="marker_5";
 			type="Empty";
 			id=8;
-			atlOffset=-20.011993;
+			atlOffset=-3.7981262;
 		};
 		class Item7
 		{
 			dataType="Marker";
-			position[]={17126.617,76.576492,15870.102};
+			position[]={14779.632,4.960288,18468.381};
 			name="marker_6";
 			type="Empty";
 			id=9;
-			atlOffset=-20.012001;
 		};
 		class Item8
 		{
@@ -1696,6 +1702,126 @@ class Mission
 			};
 			id=187;
 			type="vn_b_ammobox_supply_02";
+		};
+		class Item42
+		{
+			dataType="Logic";
+			class PositionInfo
+			{
+				position[]={15757.55,14.98,7204.438};
+			};
+			id=190;
+			type="ModuleCurator_F";
+			class CustomAttributes
+			{
+				class Attribute0
+				{
+					property="ModuleCurator_F_Owner";
+					expression="_this setVariable ['Owner',_value,true];";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"STRING"
+								};
+							};
+							value="#adminLogged";
+						};
+					};
+				};
+				class Attribute1
+				{
+					property="ModuleCurator_F_Forced";
+					expression="_this setVariable ['Forced',_value,true];";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"SCALAR"
+								};
+							};
+							value=0;
+						};
+					};
+				};
+				class Attribute2
+				{
+					property="ModuleCurator_F_Name";
+					expression="_this setVariable ['Name',_value,true];";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"STRING"
+								};
+							};
+							value="";
+						};
+					};
+				};
+				class Attribute3
+				{
+					property="ModuleCurator_F_Addons";
+					expression="_this setVariable ['Addons',_value,true];";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"SCALAR"
+								};
+							};
+							value=3;
+						};
+					};
+				};
+				nAttributes=4;
+			};
+		};
+		class Item43
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={15697.872,16.913843,7202.2583};
+			};
+			side="Empty";
+			flags=4;
+			class Attributes
+			{
+			};
+			id=192;
+			type="vn_us_komex_medium_03";
+		};
+		class Item44
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={15695.78,21.769392,7193.7085};
+			};
+			side="Empty";
+			flags=5;
+			class Attributes
+			{
+			};
+			id=194;
+			type="Land_vn_mobileradar_01_radar_f";
 		};
 	};
 	class Connections
