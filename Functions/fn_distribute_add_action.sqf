@@ -19,7 +19,7 @@
 	{},													// Code executed on interrupted
 	[],													// Arguments passed to the scripts as _this select 3
 	8,													// Action duration [s]
-	0,													// Priority
+	1.3,													// Priority
 	true,												// Remove on completion
 	false												// Show in unconscious state
 ] remoteExec ["BIS_fnc_holdActionAdd", 0, _this];	// MP compatible implementation

@@ -16,6 +16,7 @@ class IA
 		class teleport{};
 		class teleport_add_action{};
 		class distribute_add_action{};
+		class togglePost_add_action{};
 	};
 
 	class MAP
@@ -26,10 +27,12 @@ class IA
 		class generateTrail{};
 		class getAjacentMarkers{};
 		class generateAOE{};
-		class initLiseningDevice{};
+		class initLiseningLoop{};
 		class combatLoop{};
 		class spawnAO{};
 		class spawnBastion{};
+		class trackPost{};
+		class getNearbyMarkers{};
 	}
 
 

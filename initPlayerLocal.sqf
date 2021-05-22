@@ -2,7 +2,7 @@ addMissionEventHandler ["PreloadFinished", {preloadFinished = true;}];
 ["InitializePlayer", [player]] call BIS_fnc_dynamicGroups;
 [] spawn TR_fnc_runMarker;
 [] spawn TR_fnc_initEarplugs;
-// [player, markers, 200] spawn TR_fnc_initLiseningDevice;
+
 
 
 //ADD "HOW TO" TO FIELD MANUAL?
@@ -25,3 +25,7 @@ player createDiaryRecord ["Settings & Keybinds", ["Settings & Keybinds", "
 <br/>Click <execute expression = '[] call outlw_MR_createDialog;'>Mag Repack</execute> (Ctrl+R)
 <br/>Click <execute expression = '[] call toggle_earplugs;'>Toggle Earplugs</execute> (Pause/Break)
 "]];
+
+waitUntil {!(isNil "listeners")};
+listeners pushBackUnique [player,200];
+publicVariable "listeners";

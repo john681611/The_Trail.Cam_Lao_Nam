@@ -1,7 +1,12 @@
 [] call TR_fnc_getMarkers;
-
+publicVariable "markers";	
 noise = [markers, 50, "ColorOpfor", ["ColorOpfor"]] call TR_fnc_setRandomZonesTo;
 illness = [markers, 10,  "ColorOrange", []] call TR_fnc_setRandomZonesTo;
+
+
+listeners = [];
+publicVariable "listeners";
+[] spawn TR_fnc_initLiseningLoop;
 
 
 

@@ -25,8 +25,8 @@ _getNextPos = {
 
 private _loc = trail select (count trail -1);
 tgt = "CAPITAL_BASE";
-_capTime = 0;
-_searchTime = 0;
+_capTime = 50;
+_searchTime = 10;
 _maxJump = 3000;
 trailState = "building";
 while {(getMarkerPos tgt) distance2D (getMarkerPos _loc) > 750 and trailState == "building"} do {
@@ -54,12 +54,12 @@ while {(getMarkerPos tgt) distance2D (getMarkerPos _loc) > 750 and trailState ==
 	};
 	sleep _capTime;
 	trail pushBack _newLoc;
-	[
-		["start", getMarkerPos _loc],
-		["end", getMarkerPos _newLoc],
-		["color", "ColorYellow"],
-		["size", 10]
-	] execVM "drawLine.sqf";  //DEBUG
+	// [
+	// 	["start", getMarkerPos _loc],
+	// 	["end", getMarkerPos _newLoc],
+	// 	["color", "ColorYellow"],
+	// 	["size", 10]
+	// ] execVM "drawLine.sqf";  //DEBUG
 	_newLoc setMarkerColor "ColorOpfor";
 	[[_newLoc], markers, 5, "ColorOpfor", ["ColorOpfor"]] spawn TR_fnc_generateAOE;
 	_loc = _newLoc;
@@ -67,11 +67,11 @@ while {(getMarkerPos tgt) distance2D (getMarkerPos _loc) > 750 and trailState ==
 
 if(trailState == "building") then {
 	trailState = "supplying";
-	sleep 3;
+	sleep 600;
 	if(trailState == "supplying") then {
 		[] spawn TR_fnc_spawnBastion;
 	};
 } else {
-	sleep 3;
+	sleep 300;
 	[] spawn TR_fnc_generateTrail;
 }

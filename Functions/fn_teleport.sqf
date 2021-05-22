@@ -14,11 +14,21 @@ private ["_Location"];
 
  _missionsData = [];
 
-  {
-     _marker = _x;
-     _name = markerText _x;
-    _missionsData append [[getMarkerPos  _marker,to_Base,_name,_name,"","",1,[getMarkerPos _marker]]];
- } forEach (([west, false] call BIS_fnc_getRespawnMarkers) + (west call BIS_fnc_getRespawnPositions));
+
+ {
+     _unit = _y;
+    if!(isObjectHidden _unit) then {
+      _name = _x;
+      _missionsData append [[getPos  _unit,to_Base,_name,_name,"","",1,[getPos _unit]]];
+    };
+ } forEach createHashMapFromArray [
+    ["HQ", hq_tele],
+    ["Camp Siagon", capital_tele],
+    ["Post Able", rad1],
+    ["Post Baker", rad2],
+    ["Post Charlie", rad3],
+    ["Post Dog", rad4]
+ ];
 
 
  disableserialization;

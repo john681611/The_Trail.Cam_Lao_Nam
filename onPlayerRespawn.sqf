@@ -19,3 +19,5 @@ _player addEventHandler ["HandleDamage", {
 }];
 
 player setUnitLoadout (player getVariable ["Saved_Loadout",[]]);
+listeners pushBackUnique [player,200];
+publicVariable "listeners";

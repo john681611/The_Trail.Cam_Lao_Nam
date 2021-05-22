@@ -8,7 +8,7 @@ class EditorData
 	toggles=1;
 	class ItemIDProvider
 	{
-		nextID=195;
+		nextID=210;
 	};
 	class MarkerIDProvider
 	{
@@ -16,10 +16,10 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={15673.436,28.164282,7208.7339};
-		dir[]={0.80443519,-0.40097877,-0.43831766};
-		up[]={0.35210609,0.91608334,-0.19185458};
-		aside[]={-0.47846541,-8.0442987e-008,-0.87811893};
+		pos[]={16041.997,92.303764,7273.6313};
+		dir[]={0.38853595,-0.53824508,0.74788505};
+		up[]={0.2481377,0.84278834,0.47763526};
+		aside[]={0.88739365,-1.4901161e-008,-0.46101245};
 	};
 };
 binarizationWanted=0;
@@ -154,7 +154,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=45;
+		items=53;
 		class Item0
 		{
 			dataType="Object";
@@ -183,11 +183,12 @@ class Mission
 		class Item1
 		{
 			dataType="Marker";
-			position[]={5244.3271,103.33736,16854.332};
+			position[]={5244.3271,103.337,16854.332};
 			name="VC_base";
 			type="vn_flag_vc";
+			alpha=0;
 			id=3;
-			atlOffset=0.00043487549;
+			atlOffset=6.8664551e-005;
 		};
 		class Item2
 		{
@@ -1389,6 +1390,7 @@ class Mission
 			class Attributes
 			{
 				init="call{this call TR_fnc_teleport_add_action;}";
+				name="hq_tele";
 			};
 			id=163;
 			type="Land_vn_latrine_01";
@@ -1798,41 +1800,492 @@ class Mission
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={15697.872,16.913843,7202.2583};
+				position[]={15799.624,21.769392,7244.8628};
 			};
 			side="Empty";
-			flags=4;
+			flags=5;
 			class Attributes
 			{
+				init="call{this attachTo [radbox1,[0,5,5]];" \n "this hideObjectGlobal true;" \n "this call TR_fnc_teleport_add_action;}";
+				name="rad1";
 			};
-			id=192;
-			type="vn_us_komex_medium_03";
+			id=194;
+			type="Land_vn_mobileradar_01_radar_f";
+			class CustomAttributes
+			{
+				class Attribute0
+				{
+					property="allowDamage";
+					expression="_this allowdamage _value;";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"BOOL"
+								};
+							};
+							value=0;
+						};
+					};
+				};
+				class Attribute1
+				{
+					property="hideObject";
+					expression="if !(is3DEN) then {_this hideobjectglobal _value;};";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"BOOL"
+								};
+							};
+							value=0;
+						};
+					};
+				};
+				nAttributes=2;
+			};
 		};
 		class Item44
 		{
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={15695.78,21.769392,7193.7085};
+				position[]={15799.133,16.347357,7253.0732};
+			};
+			side="Empty";
+			flags=4;
+			class Attributes
+			{
+				init="call{this call TR_fnc_togglePost_add_action;" \n "[this, ""Post Able""] spawn TR_fnc_trackPost;}";
+				name="radbox1";
+			};
+			id=199;
+			type="vn_us_komex_small_02";
+			class CustomAttributes
+			{
+				class Attribute0
+				{
+					property="allowDamage";
+					expression="_this allowdamage _value;";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"BOOL"
+								};
+							};
+							value=0;
+						};
+					};
+				};
+				nAttributes=1;
+			};
+		};
+		class Item45
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={16091.047,27.52066,3641.343};
+				angles[]={0,3.203831,0};
 			};
 			side="Empty";
 			flags=5;
 			class Attributes
 			{
+				init="call{this call TR_fnc_teleport_add_action;}";
+				name="capital_tele";
 			};
-			id=194;
+			id=200;
+			type="Land_vn_latrine_01";
+			class CustomAttributes
+			{
+				class Attribute0
+				{
+					property="allowDamage";
+					expression="_this allowdamage _value;";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"BOOL"
+								};
+							};
+							value=0;
+						};
+					};
+				};
+				nAttributes=1;
+			};
+		};
+		class Item46
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={15787.595,21.769392,7244.8511};
+			};
+			side="Empty";
+			flags=5;
+			class Attributes
+			{
+				init="call{this attachTo [radbox2,[0,5,5]];" \n "this hideObjectGlobal true;" \n "this call TR_fnc_teleport_add_action;}";
+				name="rad2";
+			};
+			id=201;
 			type="Land_vn_mobileradar_01_radar_f";
+			class CustomAttributes
+			{
+				class Attribute0
+				{
+					property="allowDamage";
+					expression="_this allowdamage _value;";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"BOOL"
+								};
+							};
+							value=0;
+						};
+					};
+				};
+				class Attribute1
+				{
+					property="hideObject";
+					expression="if !(is3DEN) then {_this hideobjectglobal _value;};";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"BOOL"
+								};
+							};
+							value=0;
+						};
+					};
+				};
+				nAttributes=2;
+			};
+		};
+		class Item47
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={15787.104,16.425358,7253.061};
+			};
+			side="Empty";
+			flags=4;
+			class Attributes
+			{
+				init="call{this call TR_fnc_togglePost_add_action;" \n "[this, ""Post Baker""] spawn TR_fnc_trackPost;}";
+				name="radbox2";
+			};
+			id=202;
+			type="vn_us_komex_small_02";
+			atlOffset=0.078001022;
+			class CustomAttributes
+			{
+				class Attribute0
+				{
+					property="allowDamage";
+					expression="_this allowdamage _value;";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"BOOL"
+								};
+							};
+							value=0;
+						};
+					};
+				};
+				nAttributes=1;
+			};
+		};
+		class Item48
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={15773.916,21.769392,7244.2822};
+			};
+			side="Empty";
+			flags=5;
+			class Attributes
+			{
+				init="call{this attachTo [radbox3,[0,5,5]];" \n "this hideObjectGlobal true;" \n "this call TR_fnc_teleport_add_action;}";
+				name="rad3";
+			};
+			id=203;
+			type="Land_vn_mobileradar_01_radar_f";
+			class CustomAttributes
+			{
+				class Attribute0
+				{
+					property="allowDamage";
+					expression="_this allowdamage _value;";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"BOOL"
+								};
+							};
+							value=0;
+						};
+					};
+				};
+				class Attribute1
+				{
+					property="hideObject";
+					expression="if !(is3DEN) then {_this hideobjectglobal _value;};";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"BOOL"
+								};
+							};
+							value=0;
+						};
+					};
+				};
+				nAttributes=2;
+			};
+		};
+		class Item49
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={15773.425,16.425358,7252.4922};
+			};
+			side="Empty";
+			flags=4;
+			class Attributes
+			{
+				init="call{this call TR_fnc_togglePost_add_action;" \n "[this, ""Post Charlie""] spawn TR_fnc_trackPost;}";
+				name="radbox3";
+			};
+			id=204;
+			type="vn_us_komex_small_02";
+			atlOffset=0.078001022;
+			class CustomAttributes
+			{
+				class Attribute0
+				{
+					property="allowDamage";
+					expression="_this allowdamage _value;";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"BOOL"
+								};
+							};
+							value=0;
+						};
+					};
+				};
+				nAttributes=1;
+			};
+		};
+		class Item50
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={15799.102,21.769392,7221.7759};
+			};
+			side="Empty";
+			flags=5;
+			class Attributes
+			{
+				init="call{this attachTo [radbox4,[0,5,5]];" \n "this hideObjectGlobal true;" \n "this call TR_fnc_teleport_add_action;}";
+				name="rad4";
+			};
+			id=205;
+			type="Land_vn_mobileradar_01_radar_f";
+			class CustomAttributes
+			{
+				class Attribute0
+				{
+					property="allowDamage";
+					expression="_this allowdamage _value;";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"BOOL"
+								};
+							};
+							value=0;
+						};
+					};
+				};
+				class Attribute1
+				{
+					property="hideObject";
+					expression="if !(is3DEN) then {_this hideobjectglobal _value;};";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"BOOL"
+								};
+							};
+							value=0;
+						};
+					};
+				};
+				nAttributes=2;
+			};
+		};
+		class Item51
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={15798.61,16.425358,7229.9868};
+			};
+			side="Empty";
+			flags=4;
+			class Attributes
+			{
+				init="call{this call TR_fnc_togglePost_add_action;" \n "[this, ""Post Dog""] spawn TR_fnc_trackPost;}";
+				name="radbox4";
+			};
+			id=206;
+			type="vn_us_komex_small_02";
+			atlOffset=0.078001022;
+			class CustomAttributes
+			{
+				class Attribute0
+				{
+					property="allowDamage";
+					expression="_this allowdamage _value;";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"BOOL"
+								};
+							};
+							value=0;
+						};
+					};
+				};
+				nAttributes=1;
+			};
+		};
+		class Item52
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={16071.018,30.649887,7344.25};
+			};
+			side="Empty";
+			flags=5;
+			class Attributes
+			{
+				init="call{[] spawn {" \n "  waitUntil {!(isNil ""listeners"")};" \n "  listeners pushBackUnique [base_radar,4000]; " \n "  publicVariable ""listeners"";" \n "};}";
+				name="base_radar";
+				disableSimulation=1;
+			};
+			id=209;
+			type="Land_vn_mobileradar_01_generator_f";
+			class CustomAttributes
+			{
+				class Attribute0
+				{
+					property="allowDamage";
+					expression="_this allowdamage _value;";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"BOOL"
+								};
+							};
+							value=0;
+						};
+					};
+				};
+				nAttributes=1;
+			};
 		};
 	};
 	class Connections
 	{
 		class LinkIDProvider
 		{
-			nextID=31;
+			nextID=32;
 		};
 		class Links
 		{
-			items=31;
+			items=32;
 			class Item0
 			{
 				linkID=0;
@@ -2137,6 +2590,16 @@ class Mission
 			{
 				linkID=30;
 				item0=187;
+				item1=166;
+				class CustomData
+				{
+					type="Sync";
+				};
+			};
+			class Item31
+			{
+				linkID=31;
+				item0=199;
 				item1=166;
 				class CustomData
 				{

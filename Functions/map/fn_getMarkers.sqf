@@ -25,7 +25,7 @@ markers = [];
 		_mark setMarkerColor "ColorBlue";
 		_mark setMarkerShape "RECTANGLE";
 		_mark setMarkerBrush "Solid";
-		_mark setMarkerAlpha 0.5; 
+		_mark setMarkerAlpha 0; 
 		_mark setMarkerSize [50,50];
 		markers pushBack _mark;
 	}
