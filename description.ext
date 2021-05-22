@@ -76,33 +76,12 @@ class Params
 	};
 };
 
-class vc {
-    class Groups {
-        class atSquad {
-            class Unit0 {
-                position[] = {0,0,0};
-                rank = "SERGEANT";
-                side = 2;
-                vehicle = "I_C_Soldier_Para_2_F";
-            };
-            class Unit1 {
-                position[] = {5,-5,0};
-                rank = "Private";
-                side = 2;
-                vehicle = "I_C_Soldier_Para_5_F";
-            };
-            class Unit2 {
-                position[] = {-5,-5,0};
-                rank = "CORPORAL";
-                side = 2;
-                vehicle = "I_C_Soldier_Para_5_F";
-            };
-            class Unit3 {
-                position[] = {10,-10,0};
-                rank = "Private";
-                side = 2;
-                vehicle = "I_C_Soldier_Para_1_F";
-            };
-        };
-    };
+class unitList
+{
+    #include "units.hpp"
+};
+
+class CfgHints
+{
+    #include "fm.hpp"
 };
