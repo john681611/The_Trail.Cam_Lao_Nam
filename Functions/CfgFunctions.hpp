@@ -17,6 +17,7 @@ class IA
 		class teleport_add_action{};
 		class distribute_add_action{};
 		class togglePost_add_action{};
+		class togglePost{};
 	};
 
 	class MAP

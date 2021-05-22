@@ -29,3 +29,20 @@ player createDiaryRecord ["Settings & Keybinds", ["Settings & Keybinds", "
 waitUntil {!(isNil "listeners")};
 listeners pushBackUnique [player,200];
 publicVariable "listeners";
+
+while {true} do {
+	with uiNamespace do { 
+				stateIcon = findDisplay 46 ctrlCreate ["RscPicture", -1];
+				_ctrlWidth = 0.1; 
+				_ctrlHeight = 0.1; 
+				_xpos = ( safeZoneX + ( safeZoneWAbs / 2 )) - ( _ctrlWidth / 2 ) ; 
+				_y = (safeZoneY)  + 0.01; 
+				stateIcon ctrlSetPosition [ _xpos, _y, _ctrlWidth, _ctrlHeight ];
+				stateIcon ctrlSetTextColor [1,0,0,1];
+				stateIcon ctrlSetText format["Media\TrailState\%1.paa", trailState];
+				stateIcon ctrlCommit 0;
+	};
+	sleep 5;
+	ctrlDelete (uiNamespace getVariable "stateIcon"); 
+};
+

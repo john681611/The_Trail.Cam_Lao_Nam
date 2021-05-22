@@ -18,6 +18,7 @@ params ["_markers"];
 						};
 						[excludeTrail, ([_x, _markers, [], 500] call TR_fnc_getAjacentMarkers)] call BIS_fnc_arrayPushStack;
 						trailState = "reeling";
+						uiNamespace setVariable ["trailState", trailState];
 					};
 				}
 			} forEach _activeZones;
@@ -38,7 +39,7 @@ params ["_markers"];
 				//REPLACE WITH GET UNITS
 				_grp = createGroup [east, false];
 				_mkr = _x;
-				_playerCount = allPlayers select {(getMarkerPos _mkr) distance _x < 500};
+				_playerCount = 3 max (15 min (count (allPlayers select {(getMarkerPos _mkr) distance _x < 500})));
 				_unitList = ["vn_o_men_vc_regional_01",
 							"vn_o_men_vc_regional_02",
 							"vn_o_men_vc_regional_03",
@@ -51,9 +52,10 @@ params ["_markers"];
 							"vn_o_men_vc_regional_10",
 							"vn_o_men_vc_regional_11",
 							"vn_o_men_vc_regional_12"];
-				{
+				for "_i" from 1 to _playerCount do {
 					_grp createUnit [ selectRandom _unitList, getMarkerPos _mkr, [], 50, "NONE"];
-				} forEach _playerCount;
+				};
+				[units _grp] remoteExec ["TR_fnc_addToAllCurators", 2];
 				_wp = _grp addWaypoint [(getMarkerPos _x), 50, 0];
 				_wp setWaypointType "SAD";
 				_grp setCurrentWaypoint _wp;

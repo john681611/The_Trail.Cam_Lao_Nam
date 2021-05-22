@@ -1,3 +1,4 @@
+if!(isServer) exitWith{};
 [
 	_this,											// Object the action is attached to
 	"Distribute",										// Title of the action
@@ -14,7 +15,6 @@
 			//Food AOE
 			[[_target], markers, 3, "ColorGreen",["ColorOpfor","ColorOrange"]] spawn TR_fnc_generateAOE;				// Code executed on completion
 		};
-		_target setDamage 1;
 	},
 	{},													// Code executed on interrupted
 	[],													// Arguments passed to the scripts as _this select 3

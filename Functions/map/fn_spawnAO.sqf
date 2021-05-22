@@ -1,13 +1,10 @@
 "VC_base" setMarkerAlpha 1;
 trailState = "abandoned";
+uiNamespace setVariable ["trailState", trailState];
 private _faction = selectRandom factions;
 private _playerCount = (count allPlayers) min 15;
 private _forceConfig = createHashMapFromArray [
 		["MBT", ceil _playerCount/5],
-		["AAA", ceil _playerCount/5],
-		["IFV", ceil _playerCount/4],
-		["AAGroup",ceil _playerCount/4],
-		["ATGroup", ceil _playerCount/4],
 		["reconGroup", ceil _playerCount/5],
 		["mainGroup", _playerCount],
 		["Car", _playerCount],

@@ -1,3 +1,4 @@
+if!(isServer) exitWith{};
 [
 	_this,											// Object the action is attached to
 	"Deploy/UnDeploy",										// Title of the action
@@ -8,15 +9,7 @@
 	{},													// Code executed when action starts
 	{},													// Code executed on every progress tick
 	{   
-		_target setVectorUp [0, 0, 1];
-		_radar = (attachedObjects _target) select 0;
-		if(isObjectHidden  _radar) then {
-			_radar hideObjectGlobal false;
-			listeners pushBackUnique [_radar,3000];
-			publicVariable "listeners";
-		} else {
-			_radar hideObjectGlobal true;
-		};
+		_target remoteExec ["TR_fnc_togglePost", 2];
 	},
 	{
 		if((count ([_target, ['ColorGreen'], 300] call TR_fnc_getNearbyMarkers)) > 0) then {
