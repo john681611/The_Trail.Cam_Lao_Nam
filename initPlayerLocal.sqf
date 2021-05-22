@@ -26,10 +26,13 @@ player createDiaryRecord ["Settings & Keybinds", ["Settings & Keybinds", "
 <br/>Click <execute expression = '[] call toggle_earplugs;'>Toggle Earplugs</execute> (Pause/Break)
 "]];
 
+"Welcome to The Trail" hintC [
+"If this is your first time check out the Field Manual.",
+"Follow the server rules and respect others."];
+
 waitUntil {!(isNil "listeners")};
 listeners pushBackUnique [player,200];
 publicVariable "listeners";
-
 while {true} do {
 	with uiNamespace do { 
 				stateIcon = findDisplay 46 ctrlCreate ["RscPicture", -1];

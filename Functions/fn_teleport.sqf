@@ -5,8 +5,8 @@ to_Base =
  {
 private ["_Location"];
     _Location = _this select 0;
-    _unit = player;
-    _unit setVehiclePosition [_Location, [], 0, "NONE"];
+    _unit = vehicle player;
+    _unit setVehiclePosition [_Location, [], 50, "NONE"];
     _unit allowDamage false;
     sleep 5;
     _unit allowDamage true;
@@ -24,10 +24,10 @@ private ["_Location"];
  } forEach createHashMapFromArray [
     ["HQ", hq_tele],
     ["Camp Siagon", capital_tele],
-    ["Post Able", rad1],
-    ["Post Baker", rad2],
-    ["Post Charlie", rad3],
-    ["Post Dog", rad4]
+    ["Outpost Able", rad1],
+    ["Outpost Baker", rad2],
+    ["Outpost Charlie", rad3],
+    ["Outpost Dog", rad4]
  ];
 
 

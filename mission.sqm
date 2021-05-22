@@ -8,7 +8,7 @@ class EditorData
 	toggles=1;
 	class ItemIDProvider
 	{
-		nextID=221;
+		nextID=222;
 	};
 	class MarkerIDProvider
 	{
@@ -16,10 +16,10 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={16087.406,101.05835,7283.5327};
-		dir[]={-0.40268782,-0.62837267,0.66558021};
-		up[]={-0.32527721,0.77791268,0.53763241};
-		aside[]={0.85559636,2.2148015e-008,0.5176518};
+		pos[]={15715.224,70.39653,7169.5752};
+		dir[]={0.68824047,-0.39314938,0.60972005};
+		up[]={0.29427817,0.9194746,0.26070437};
+		aside[]={0.66311789,-1.4901161e-008,-0.74851495};
 	};
 };
 binarizationWanted=0;
@@ -245,7 +245,7 @@ class Mission
 		class Item8
 		{
 			dataType="Marker";
-			position[]={16368.184,26.379999,3652.717};
+			position[]={16181.98,26.379999,3726.76};
 			name="CAPITAL_BASE";
 			type="vn_flag_arvn";
 			id=10;
@@ -1799,7 +1799,7 @@ class Mission
 			flags=4;
 			class Attributes
 			{
-				init="call{this call TR_fnc_togglePost_add_action;" \n "[this, ""Post Able""] spawn TR_fnc_trackPost;}";
+				init="call{this call TR_fnc_togglePost_add_action;" \n "[this, ""Outpost Able""] spawn TR_fnc_trackPost;}";
 				name="radbox1";
 			};
 			id=199;
@@ -1939,7 +1939,7 @@ class Mission
 			flags=4;
 			class Attributes
 			{
-				init="call{this call TR_fnc_togglePost_add_action;" \n "[this, ""Post Baker""] spawn TR_fnc_trackPost;}";
+				init="call{this call TR_fnc_togglePost_add_action;" \n "[this, ""Outpost Baker""] spawn TR_fnc_trackPost;}";
 				name="radbox2";
 			};
 			id=202;
@@ -2039,7 +2039,7 @@ class Mission
 			flags=4;
 			class Attributes
 			{
-				init="call{this call TR_fnc_togglePost_add_action;" \n "[this, ""Post Charlie""] spawn TR_fnc_trackPost;}";
+				init="call{this call TR_fnc_togglePost_add_action;" \n "[this, ""Outpost Charlie""] spawn TR_fnc_trackPost;}";
 				name="radbox3";
 			};
 			id=204;
@@ -2139,7 +2139,7 @@ class Mission
 			flags=4;
 			class Attributes
 			{
-				init="call{this call TR_fnc_togglePost_add_action;" \n "[this, ""Post Dog""] spawn TR_fnc_trackPost;}";
+				init="call{this call TR_fnc_togglePost_add_action;" \n "[this, ""Outpost Dog""] spawn TR_fnc_trackPost;}";
 				name="radbox4";
 			};
 			id=206;
@@ -2212,19 +2212,306 @@ class Mission
 		};
 		class Item52
 		{
+			dataType="Marker";
+			position[]={16072.828,29,7345.2554};
+			name="marker_12";
+			type="b_antiair";
+			id=220;
+		};
+		class Item53
+		{
 			dataType="Logic";
 			class PositionInfo
 			{
-				position[]={15751.446,14.98,7193.8062};
+				position[]={15709.061,14.98,7192.8457};
 			};
-			id=211;
-			type="vn_module_qol";
+			id=221;
+			type="vn_module_advanced_revive";
 			class CustomAttributes
 			{
 				class Attribute0
 				{
-					property="vn_module_qol_earplug";
-					expression="_this setVariable ['earplugs',_value,true];";
+					property="vn_module_revive_revive_requirement";
+					expression="_this setVariable ['revive_requirement',_value,true];";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"SCALAR"
+								};
+							};
+							value=0;
+						};
+					};
+				};
+				class Attribute1
+				{
+					property="vn_module_revive_revive_item";
+					expression="_this setVariable ['revive_item',_value,true];";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"ARRAY"
+								};
+							};
+							class value
+							{
+								items=5;
+								class Item0
+								{
+									class data
+									{
+										class type
+										{
+											type[]=
+											{
+												"STRING"
+											};
+										};
+										value="FirstAidKit";
+									};
+								};
+								class Item1
+								{
+									class data
+									{
+										class type
+										{
+											type[]=
+											{
+												"STRING"
+											};
+										};
+										value="Medikit";
+									};
+								};
+								class Item2
+								{
+									class data
+									{
+										class type
+										{
+											type[]=
+											{
+												"STRING"
+											};
+										};
+										value="vn_o_item_firstaidkit";
+									};
+								};
+								class Item3
+								{
+									class data
+									{
+										class type
+										{
+											type[]=
+											{
+												"STRING"
+											};
+										};
+										value="vn_b_item_firstaidkit";
+									};
+								};
+								class Item4
+								{
+									class data
+									{
+										class type
+										{
+											type[]=
+											{
+												"STRING"
+											};
+										};
+										value="vn_b_item_medikit_01";
+									};
+								};
+							};
+						};
+					};
+				};
+				class Attribute2
+				{
+					property="vn_module_revive_bleedout_affects_actions";
+					expression="_this setVariable ['bleedout_affects_actions',_value,true];";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"SCALAR"
+								};
+							};
+							value=1;
+						};
+					};
+				};
+				class Attribute3
+				{
+					property="vn_module_revive_revive_item_remove";
+					expression="_this setVariable ['revive_item_remove',_value,true];";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"SCALAR"
+								};
+							};
+							value=0;
+						};
+					};
+				};
+				class Attribute4
+				{
+					property="vn_module_revive_bleedout_time";
+					expression="_this setVariable ['bleedout_time',_value,true];";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"SCALAR"
+								};
+							};
+							value=300;
+						};
+					};
+				};
+				class Attribute5
+				{
+					property="vn_module_revive_bandage_item";
+					expression="_this setVariable ['bandage_item',_value,true];";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"ARRAY"
+								};
+							};
+							class value
+							{
+								items=5;
+								class Item0
+								{
+									class data
+									{
+										class type
+										{
+											type[]=
+											{
+												"STRING"
+											};
+										};
+										value="FirstAidKit";
+									};
+								};
+								class Item1
+								{
+									class data
+									{
+										class type
+										{
+											type[]=
+											{
+												"STRING"
+											};
+										};
+										value="vn_o_item_firstaidkit";
+									};
+								};
+								class Item2
+								{
+									class data
+									{
+										class type
+										{
+											type[]=
+											{
+												"STRING"
+											};
+										};
+										value="vn_b_item_firstaidkit";
+									};
+								};
+								class Item3
+								{
+									class data
+									{
+										class type
+										{
+											type[]=
+											{
+												"STRING"
+											};
+										};
+										value="vn_b_item_medikit_01";
+									};
+								};
+								class Item4
+								{
+									class data
+									{
+										class type
+										{
+											type[]=
+											{
+												"STRING"
+											};
+										};
+										value="Medikit";
+									};
+								};
+							};
+						};
+					};
+				};
+				class Attribute6
+				{
+					property="vn_module_revive_revive_delay";
+					expression="_this setVariable ['revive_delay',_value,true];";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"SCALAR"
+								};
+							};
+							value=5;
+						};
+					};
+				};
+				class Attribute7
+				{
+					property="vn_module_revive_medic_boost";
+					expression="_this setVariable ['medic_boost',_value,true];";
 					class Value
 					{
 						class data
@@ -2240,16 +2527,122 @@ class Mission
 						};
 					};
 				};
-				nAttributes=1;
+				class Attribute8
+				{
+					property="vn_module_revive_grenade_chance";
+					expression="_this setVariable ['grenade_chance',_value,true];";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"SCALAR"
+								};
+							};
+							value=75;
+						};
+					};
+				};
+				class Attribute9
+				{
+					property="vn_module_revive_bandage_item_remove";
+					expression="_this setVariable ['bandage_item_remove',_value,true];";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"SCALAR"
+								};
+							};
+							value=1;
+						};
+					};
+				};
+				class Attribute10
+				{
+					property="vn_module_revive_time_to_respawn_action";
+					expression="_this setVariable ['time_to_respawn_action',_value,true];";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"SCALAR"
+								};
+							};
+							value=75;
+						};
+					};
+				};
+				class Attribute11
+				{
+					property="vn_module_revive_withstand_percentage";
+					expression="_this setVariable ['withstand_percentage',_value,true];";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"SCALAR"
+								};
+							};
+							value=80;
+						};
+					};
+				};
+				class Attribute12
+				{
+					property="vn_module_revive_downed_icon_distance";
+					expression="_this setVariable ['downed_icon_distance',_value,true];";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"SCALAR"
+								};
+							};
+							value=50;
+						};
+					};
+				};
+				class Attribute13
+				{
+					property="vn_module_revive_move_chance";
+					expression="_this setVariable ['move_chance',_value,true];";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"SCALAR"
+								};
+							};
+							value=75;
+						};
+					};
+				};
+				nAttributes=14;
 			};
-		};
-		class Item53
-		{
-			dataType="Marker";
-			position[]={16072.828,29,7345.2554};
-			name="marker_12";
-			type="b_antiair";
-			id=220;
 		};
 	};
 	class Connections

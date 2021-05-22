@@ -24,18 +24,29 @@ private _unitMap = createHashMapFromArray ([
 			"vn_o_wheeled_z157_02_vcmf", .5
 			]
 		],
+		["Inf",[
+			"vn_o_men_vc_regional_01",.5,
+			"vn_o_men_vc_regional_02",.5,
+			"vn_o_men_vc_regional_03",.5,
+			"vn_o_men_vc_regional_04",.5,
+			"vn_o_men_vc_regional_05",.5,
+			"vn_o_men_vc_regional_06",.5,
+			"vn_o_men_vc_regional_07",.5,
+			"vn_o_men_vc_regional_08",.5,
+			"vn_o_men_vc_regional_09",.5,
+			"vn_o_men_vc_regional_10",.5,
+			"vn_o_men_vc_regional_11",.5,
+			"vn_o_men_vc_regional_12",.5
+			]
+		],
 		["mainGroup",[
-			(configfile >> "CfgGroups" >> "East" >> "VN_VC" >> "vn_o_group_men_vc_local" >> "vn_o_group_men_vc_local_01"),.1,
-			(configfile >> "CfgGroups" >> "East" >> "VN_VC" >> "vn_o_group_men_vc_local" >> "vn_o_group_men_vc_local_02"),.1,
-			(configfile >> "CfgGroups" >> "East" >> "VN_VC" >> "vn_o_group_men_vc_local" >> "vn_o_group_men_vc_local_03"),.1,
-			(configfile >> "CfgGroups" >> "East" >> "VN_VC" >> "vn_o_group_men_vc_regional" >> "vn_o_group_men_vc_regional_01"),.1,
-			(configfile >> "CfgGroups" >> "East" >> "VN_VC" >> "vn_o_group_men_vc_regional" >> "vn_o_group_men_vc_regional_02"),.1,
-			(configfile >> "CfgGroups" >> "East" >> "VN_VC" >> "vn_o_group_men_vc_regional" >> "vn_o_group_men_vc_regional_03"),.1
+				(missionConfigFile >> "VC" >> "squad1"),.1,
+				(missionConfigFile >> "VC" >> "squad2"),.1,
+				(missionConfigFile >> "VC" >> "squad3"),.1
 			]
 		],
 		["reconGroup",[
-			(configfile >> "CfgGroups" >> "East" >> "VN_VC" >> "vn_o_group_men_vc_regional" >> "vn_o_group_men_vc_regional_04"),.1,
-			(configfile >> "CfgGroups" >> "East" >> "VN_VC" >> "vn_o_group_men_vc_local" >> "vn_o_group_men_vc_local_04"),.1
+				(missionConfigFile >> "VC" >> "squad3"),.1
 			]
 		],
 		["turret",[
