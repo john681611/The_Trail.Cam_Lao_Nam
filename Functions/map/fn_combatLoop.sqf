@@ -34,7 +34,7 @@ params ["_markers"];
 				};
 			_needCiviActivating = _markers select { 
 				_mrk = _x; 
-				(getMarkerColor _x) in ["ColorBlue", "ColorGreen"] AND !(_x in _activeZones) AND (selectMin (allPlayers apply {_x distance2D (getMarkerPos _mrk)})) < 200 and (random 10) < 14
+				(getMarkerColor _x) in ["ColorBlue", "ColorGreen"] AND !(_x in _activeZones) AND (selectMin (allPlayers apply {_x distance2D (getMarkerPos _mrk)})) < 200 and (random 10) < 4
 				};
 			_needsDeactivatingKeys = (keys _activeZones) select {
 				_mrk = _x;
