@@ -29,3 +29,4 @@ excludeTrail = [];
 
 [markers] spawn TR_fnc_combatLoop;
 hint "Finished setting up the map";
+onPlayerConnected { uiNamespace setVariable ["trailState", trailState]; };
