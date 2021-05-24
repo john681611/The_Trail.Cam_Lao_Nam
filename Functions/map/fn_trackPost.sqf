@@ -1,8 +1,8 @@
 params["_post", "_name"];
 
-_mkr = createMarker [format["%1", _post], getPos _post];
-_mkr setMarkerColor "colorBLUFOR";
-_mkr setMarkerType "b_installation";
+_mkr = createMarkerLocal [format["%1", _post], getPos _post];
+_mkr setMarkerColorLocal "colorBLUFOR";
+_mkr setMarkerTypeLocal "b_installation";
 
 
 while {true} do {

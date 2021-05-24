@@ -21,11 +21,11 @@ if(count (keys _cache) == 0) then { //CLEAR OVERIDE NEEDED
 markers = [];
 {
 	if!(_y inArea safezone) then {
-		_mark = createMarker[_x, _y];
-		_mark setMarkerColor "ColorBlue";
-		_mark setMarkerShape "RECTANGLE";
-		_mark setMarkerBrush "Solid";
-		_mark setMarkerAlpha 0; 
+		_mark = createMarkerLocal [_x, _y];
+		_mark setMarkerColorLocal "ColorBlue";
+		_mark setMarkerShapeLocal "RECTANGLE";
+		_mark setMarkerBrushLocal "Solid";
+		_mark setMarkerAlphaLocal 0; 
 		_mark setMarkerSize [50,50];
 		markers pushBack _mark;
 	}

@@ -69,14 +69,14 @@ if (_id == "") then
 {
   _id = format ["%1", random 50000];
 };
-_mrk = createMarker [_id, _center];
+_mrk = createMarkerLocal [_id, _center];
 
 // define marker
-_mrk setMarkerDir _ang;
-_mrk setMarkerPos _center;
-_mrk setMarkerShape "RECTANGLE";
-_mrk setMarkerBrush "SOLID";
-_mrk setMarkerColor _color;
+_mrk setMarkerDirLocal _ang;
+_mrk setMarkerPosLocal _center;
+_mrk setMarkerShapeLocal "RECTANGLE";
+_mrk setMarkerBrushLocal "SOLID";
+_mrk setMarkerColorLocal _color;
 _mrk setMarkerSize [_size, _dist];
 
 // return marker
