@@ -69,7 +69,7 @@ if (_id == "") then
 {
   _id = format ["%1", random 50000];
 };
-_mrk = createMarkerLocal [_id, _center];
+_mrk = createMarker [_id, _center];
 
 // define marker
 _mrk setMarkerDirLocal _ang;

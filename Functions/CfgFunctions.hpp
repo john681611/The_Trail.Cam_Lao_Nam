@@ -36,6 +36,14 @@ class IA
 		class getNearbyMarkers{};
 	}
 
+	class INTEL
+	{
+		file = "Functions\intel";
+		class tryIntel{};
+		class addHostileIntelAction{};
+		class addCivIntelAction{};
+	}
+
 
 	class PLAYER
 	{

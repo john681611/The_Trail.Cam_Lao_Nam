@@ -3,10 +3,13 @@ params ["_markers"];
 	while {true} do {
 		sleep 3;
 		if(trailState !="attacking") then {
-			//Is a _activeZones clear?
 			{
 				if({alive _x} count (units _y) == 0)then {
-					_x setMarkerColor "ColorBlue";
+					if((getMarkerColor _x) in ["ColorBlue", "ColorGreen"]) then {
+						_x setMarkerColor "ColorOpfor";
+					} else {
+						_x setMarkerColor "ColorBlue";
+					};
 					deleteGroup _y;
 					_activeZones deleteAt _x;
 					if(_x in trail) then {
@@ -29,6 +32,10 @@ params ["_markers"];
 				_mrk = _x; 
 				(getMarkerColor _x) == "ColorOpfor" AND !(_x in _activeZones) AND (selectMin (allPlayers apply {_x distance2D (getMarkerPos _mrk)})) < 300 
 				};
+			_needCiviActivating = _markers select { 
+				_mrk = _x; 
+				(getMarkerColor _x) in ["ColorBlue", "ColorGreen"] AND !(_x in _activeZones) AND (selectMin (allPlayers apply {_x distance2D (getMarkerPos _mrk)})) < 200 and (random 10) < 14
+				};
 			_needsDeactivatingKeys = (keys _activeZones) select {
 				_mrk = _x;
 				(selectMin (_triggerPlayers apply {_x distance2D (getMarkerPos _mrk)})) > 400
@@ -37,7 +44,6 @@ params ["_markers"];
 
 			//Activate Zone and spawn units;
 			{
-				//REPLACE WITH GET UNITS
 				_grp = createGroup [east, false];
 				_mkr = _x;
 				_unitSet = "Inf_local";
@@ -49,6 +55,10 @@ params ["_markers"];
 				for "_i" from 1 to _playerCount do {
 					_grp createUnit [(["VC", _unitSet] call TR_fnc_getUnits), getMarkerPos _mkr, [], 50, "NONE"];
 				};
+				if(random 10 < 1) then {
+					_unit = _grp createUnit ["vn_o_men_nva_01", getMarkerPos _mkr, [], 50, "NONE"];
+					_unit spawn TR_fnc_addHostileIntelAction;
+				};
 				[units _grp] remoteExec ["TR_fnc_addToAllCurators", 2];
 				_wp = _grp addWaypoint [(getMarkerPos _x), 50, 0];
 				_wp setWaypointType "SAD";
@@ -57,6 +67,22 @@ params ["_markers"];
 				_activeZones set [_x, _grp];
 				
 			} forEach _needActivating;
+
+			//Activate civie Zone and spawn units;
+			{
+
+				_grp = createGroup [civilian, false];
+				_mkr = _x;
+				_unit = _grp createUnit [(["CIV", "Inf"] call TR_fnc_getUnits), getMarkerPos _mkr, [], 50, "NONE"];
+				_unit spawn TR_fnc_addCivIntelAction;
+				[units _grp] remoteExec ["TR_fnc_addToAllCurators", 2];
+				_wp = _grp addWaypoint [(getMarkerPos _x), 100, 0];
+				_wp setWaypointType "LOITER";
+				_grp setCurrentWaypoint _wp;
+				// _x setMarkerBrush "Cross"; //DEBUG
+				_activeZones set [_x, _grp];
+				
+			} forEach _needCiviActivating;
 
 			//Deactivate Zone and delete units;
 			{

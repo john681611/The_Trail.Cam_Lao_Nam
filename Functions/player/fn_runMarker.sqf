@@ -1,4 +1,4 @@
-_marker = createMarkerLocal [ format["%1",getPlayerUID player], position player ];
+_marker = createMarker [ format["%1",getPlayerUID player], position player ];
 _marker setMarkerColorLocal "ColorBLUFOR";
 _marker setMarkerTypeLocal  "mil_triangle";
 _marker setMarkerTextLocal profileName;

@@ -1,6 +1,6 @@
 params ["_vehicle"];
 
-private _marker = createmarkerLocal [format ["%1_marker",_vehicle], (getpos _vehicle)];
+private _marker = createMarker [format ["%1_marker",_vehicle], (getpos _vehicle)];
 _marker setMarkerColorLocal "ColorBLUFOR";
 _marker setMarkerTypeLocal  "mil_dot";
 while {true} do {

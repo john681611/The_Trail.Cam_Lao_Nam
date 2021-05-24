@@ -91,6 +91,28 @@ private _unitMap = createHashMapFromArray ([
 				"vn_o_vc_static_rpd_high", .5
 		]]
 		]
+	],
+	["CIV", createHashMapFromArray [
+		["Inf",[
+				"vn_c_men_01",.5,
+				"vn_c_men_02",.5,
+				"vn_c_men_05",.5,
+				"vn_c_men_06",.5,
+				"vn_c_men_09",.5,
+				"vn_c_men_10",.5,
+				"vn_c_men_13",.5,
+				"vn_c_men_14",.5,
+				"vn_c_men_17",.5,
+				"vn_c_men_18",.5,
+				"vn_c_men_21",.5,
+				"vn_c_men_22",.5,
+				"vn_c_men_25",.5,
+				"vn_c_men_26",.5,
+				"vn_c_men_29",.5,
+				"vn_c_men_30",.5
+				]
+			]
+		]	
 	]
 ]);
 
