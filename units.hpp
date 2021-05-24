@@ -19,25 +19,61 @@ class VC {
                 position[] = {0,0,0};
                 rank = "SERGEANT";
                 side = 2;
-                vehicle = "vn_o_men_vc_regional_01";
+                vehicle = "vn_o_men_vc_01";
             };
             class Unit1 {
-                position[] = {5,-5,0};
+                position[] = {0,-5,0};
                 rank = "Private";
                 side = 2;
-                vehicle = "vn_o_men_vc_regional_02";
+                vehicle = "vn_o_men_vc_10";
             };
             class Unit2 {
-                position[] = {-5,-5,0};
+                position[] = {0,-10,0};
                 rank = "CORPORAL";
                 side = 2;
-                vehicle = "vn_o_men_vc_regional_03";
+                vehicle = "vn_o_men_vc_02";
             };
             class Unit3 {
-                position[] = {10,-10,0};
+                position[] = {0,-15,0};
                 rank = "Private";
                 side = 2;
-                vehicle = "vn_o_men_vc_regional_04";
+                vehicle = "vn_o_men_vc_03";
+            };
+            class Unit4 {
+                position[] = {0,-20,0};
+                rank = "Private";
+                side = 2;
+                vehicle = "vn_o_men_vc_04";
+            };
+            class Unit5 {
+                position[] = {0,-15,0};
+                rank = "Private";
+                side = 2;
+                vehicle = "vn_o_men_vc_05";
+            };
+            class Unit6 {
+                position[] = {0,-20,0};
+                rank = "Private";
+                side = 2;
+                vehicle = "vn_o_men_vc_06";
+            };
+            class Unit7 {
+                position[] = {0,-25,0};
+                rank = "Private";
+                side = 2;
+                vehicle = "vn_o_men_vc_07";
+            };
+            class Unit8 {
+                position[] = {0,-30,0};
+                rank = "Private";
+                side = 2;
+                vehicle = "vn_o_men_vc_08";
+            };
+            class Unit9 {
+                position[] = {0,-35,0};
+                rank = "Private";
+                side = 2;
+                vehicle = "vn_o_men_vc_09";
             };
         };
 	class squad2 {
@@ -45,25 +81,61 @@ class VC {
                 position[] = {0,0,0};
                 rank = "SERGEANT";
                 side = 2;
-                vehicle = "vn_o_men_vc_regional_05";
+                vehicle = "vn_o_men_vc_01";
             };
             class Unit1 {
-                position[] = {5,-5,0};
+                position[] = {0,-5,0};
                 rank = "Private";
                 side = 2;
-                vehicle = "vn_o_men_vc_regional_06";
+                vehicle = "vn_o_men_vc_10";
             };
             class Unit2 {
-                position[] = {-5,-5,0};
+                position[] = {0,-10,0};
                 rank = "CORPORAL";
                 side = 2;
-                vehicle = "vn_o_men_vc_regional_07";
+                vehicle = "vn_o_men_vc_12";
             };
             class Unit3 {
-                position[] = {10,-10,0};
+                position[] = {0,-15,0};
                 rank = "Private";
                 side = 2;
-                vehicle = "vn_o_men_vc_regional_08";
+                vehicle = "vn_o_men_vc_13";
+            };
+            class Unit4 {
+                position[] = {0,-20,0};
+                rank = "Private";
+                side = 2;
+                vehicle = "vn_o_men_vc_14";
+            };
+            class Unit5 {
+                position[] = {0,-15,0};
+                rank = "Private";
+                side = 2;
+                vehicle = "vn_o_men_vc_15";
+            };
+            class Unit6 {
+                position[] = {0,-20,0};
+                rank = "Private";
+                side = 2;
+                vehicle = "vn_o_men_vc_16";
+            };
+            class Unit7 {
+                position[] = {0,-25,0};
+                rank = "Private";
+                side = 2;
+                vehicle = "vn_o_men_vc_17";
+            };
+            class Unit8 {
+                position[] = {0,-30,0};
+                rank = "Private";
+                side = 2;
+                vehicle = "vn_o_men_vc_18";
+            };
+            class Unit9 {
+                position[] = {0,-35,0};
+                rank = "Private";
+                side = 2;
+                vehicle = "vn_o_men_vc_19";
             };
 		};
 	class squad3 {
@@ -71,25 +143,31 @@ class VC {
                 position[] = {0,0,0};
                 rank = "SERGEANT";
                 side = 2;
-                vehicle = "vn_o_men_vc_regional_09";
+                vehicle = "vn_o_men_vc_01";
             };
             class Unit1 {
-                position[] = {5,-5,0};
+                position[] = {0,-5,0};
                 rank = "Private";
                 side = 2;
-                vehicle = "vn_o_men_vc_regional_10";
+                vehicle = "vn_o_men_vc_06";
             };
             class Unit2 {
-                position[] = {-5,-5,0};
+                position[] = {0,-10,0};
                 rank = "CORPORAL";
                 side = 2;
-                vehicle = "vn_o_men_vc_regional_11";
+                vehicle = "vn_o_men_vc_10";
             };
             class Unit3 {
-                position[] = {10,-10,0};
+                position[] = {0,-15,0};
                 rank = "Private";
                 side = 2;
-                vehicle = "vn_o_men_vc_regional_12";
+                vehicle = "vn_o_men_vc_12";
+            };
+            class Unit4 {
+                position[] = {0,-20,0};
+                rank = "Private";
+                side = 2;
+                vehicle = "vn_o_men_vc_13";
             };
 		};
 };
