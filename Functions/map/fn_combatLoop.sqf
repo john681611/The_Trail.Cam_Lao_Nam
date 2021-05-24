@@ -40,9 +40,14 @@ params ["_markers"];
 				//REPLACE WITH GET UNITS
 				_grp = createGroup [east, false];
 				_mkr = _x;
+				_unitSet = "Inf_local";
 				_playerCount = 3 max (15 min (count (allPlayers select {(getMarkerPos _mkr) distance _x < 500})));
+				if(_x in trail) then {
+					_unitSet = "Inf_regional";
+					_playerCount = _playerCount * 2;
+				};
 				for "_i" from 1 to _playerCount do {
-					_grp createUnit [(["VC", "Inf"] call TR_fnc_getUnits), getMarkerPos _mkr, [], 50, "NONE"];
+					_grp createUnit [(["VC", _unitSet] call TR_fnc_getUnits), getMarkerPos _mkr, [], 50, "NONE"];
 				};
 				[units _grp] remoteExec ["TR_fnc_addToAllCurators", 2];
 				_wp = _grp addWaypoint [(getMarkerPos _x), 50, 0];
