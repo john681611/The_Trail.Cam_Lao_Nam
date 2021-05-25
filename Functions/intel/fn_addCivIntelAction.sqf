@@ -1,7 +1,7 @@
 if!(isServer) exitWith{};
 [
 	_this,											// Object the action is attached to
-	"Search",										// Title of the action
+	"Question",										// Title of the action
 	"\a3\ui_f\data\IGUI\Cfg\holdactions\holdAction_connect_ca.paa",	// Idle icon shown on screen
 	"\a3\ui_f\data\IGUI\Cfg\holdactions\holdAction_connect_ca.paa",	// Progress icon shown on screen
 	"_this distance _target < 3 and (alive _target)",						// Condition for the action to be shown
