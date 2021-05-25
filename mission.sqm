@@ -5,21 +5,21 @@ class EditorData
 	angleGridStep=0.2617994;
 	scaleGridStep=1;
 	autoGroupingDist=10;
-	toggles=1;
+	toggles=129;
 	class ItemIDProvider
 	{
-		nextID=263;
+		nextID=287;
 	};
 	class MarkerIDProvider
 	{
-		nextID=13;
+		nextID=14;
 	};
 	class Camera
 	{
-		pos[]={15568.561,40.398842,7239.126};
-		dir[]={0.93591833,-0.32542464,0.13474303};
-		up[]={0.32210365,0.94556803,0.046372876};
-		aside[]={0.14249958,0,-0.98979491};
+		pos[]={15563.26,40.398842,7251.334};
+		dir[]={0.77654141,-0.41023985,-0.478212};
+		up[]={0.34931582,0.91197765,-0.21511668};
+		aside[]={-0.52436811,1.4901161e-008,-0.85149169};
 	};
 };
 binarizationWanted=0;
@@ -2180,7 +2180,7 @@ class Mission
 			flags=5;
 			class Attributes
 			{
-				init="call{[] spawn {" \n "  waitUntil {!(isNil ""listeners"")};" \n "  listeners pushBackUnique [base_radar,4000]; " \n "  publicVariable ""listeners"";" \n "};}";
+				init="call{[] spawn {" \n "  waitUntil {!(isNil ""listeners"")};" \n "  listeners pushBackUnique [base_radar,3000]; " \n "  publicVariable ""listeners"";" \n "};}";
 				name="base_radar";
 				disableSimulation=1;
 			};
