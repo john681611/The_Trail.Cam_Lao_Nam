@@ -34,7 +34,7 @@ params ["_markers"];
 				};
 			_needCiviActivating = _markers select { 
 				_mrk = _x; 
-				(getMarkerColor _x) in ["ColorBlue", "ColorGreen"] AND !(_x in _activeZones) AND (selectMin (allPlayers apply {_x distance2D (getMarkerPos _mrk)})) < 200 and (random 10) < 4
+				(getMarkerColor _x) in ["ColorBlue", "ColorGreen"] AND !(_x in _activeZones) AND (selectMin (allPlayers apply {_x distance2D (getMarkerPos _mrk)})) < 200 and (random 10) < 1
 				};
 			_needsDeactivatingKeys = (keys _activeZones) select {
 				_mrk = _x;
@@ -60,9 +60,7 @@ params ["_markers"];
 					_unit spawn TR_fnc_addHostileIntelAction;
 				};
 				[units _grp] remoteExec ["TR_fnc_addToAllCurators", 2];
-				_wp = _grp addWaypoint [(getMarkerPos _x), 50, 0];
-				_wp setWaypointType "SAD";
-				_grp setCurrentWaypoint _wp;
+				[_grp, (getMarkerPos _x) , 50, 3, 0.1, 0.1, true] call CBAEXT_fnc_taskDefend;
 				// _x setMarkerBrush "Cross"; //DEBUG
 				_activeZones set [_x, _grp];
 				
@@ -76,9 +74,8 @@ params ["_markers"];
 				_unit = _grp createUnit [(["CIV", "Inf"] call TR_fnc_getUnits), getMarkerPos _mkr, [], 50, "NONE"];
 				_unit spawn TR_fnc_addCivIntelAction;
 				[units _grp] remoteExec ["TR_fnc_addToAllCurators", 2];
-				_wp = _grp addWaypoint [(getMarkerPos _x), 100, 0];
-				_wp setWaypointType "LOITER";
-				_grp setCurrentWaypoint _wp;
+				_grp setSpeedMode "LIMITED";
+				[_grp, (getMarkerPos _x), 50] call CBAEXT_fnc_taskPatrol;
 				// _x setMarkerBrush "Cross"; //DEBUG
 				_activeZones set [_x, _grp];
 				
