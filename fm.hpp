@@ -27,6 +27,22 @@ class Trail
 		arguments[] = {
 		};
 	};
+	class Intel
+	{
+		displayName = "Intel";
+		displayNameShort = "Intel";
+		description = "Gathering Intel%1 You can gather intel from two sources, searching bodies of officers or by questioning civilians.%1%1Officers look a bit more formal military than the usual units you will be fighting with olive green smock and helmet once killed you can search their body for intel.%1%1Civilian questioning comes in two forms depenging on surrounding zones.%1%2a civ with only friendly zones around them are usually cooperative and freely give informaiton.%1%2 a civ with neutral zones nearby will be less cooperative and questioning can be violent which can be fatal for the civ.%1%1 Intel its self depends on where you collect it officers can have intel further away from where they are operating than civilians.%1Intel can tell you one of three things:%1%2The Trail%1%2Ill civilians%1%2Hostile zones%1%1a Marker is placed on the map including a date and time when it was collected.";
+		arguments[] = {
+		};
+	};
+	class Civilians
+	{
+		displayName = "Civilians";
+		displayNameShort = "Civilians";
+		description = "Civilians%1 found roaming neutral and friendly zones are a good source of intel. Be wary as our relations with civilians is fragile at best. A civ perishing for any reason is blamed on us and means the area quickly takes up armes against you.";
+		arguments[] = {
+		};
+	};
 	class Distrubuting
 	{
 		displayName = "Distrubuting Food and Aid";
