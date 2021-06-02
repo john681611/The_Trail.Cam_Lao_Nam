@@ -1,5 +1,6 @@
 #include "Modules\outlw_magRepack\MagRepack_config.hpp"
 #include "Modules\CHVD\dialog.hpp"
+#include "logistics.hpp"
 briefingName = "The Trail 0.0.1";
 onLoadName = "The Trail 0.0.1";
 overviewText = "The Trail 0.0.1";
@@ -15,13 +16,13 @@ respawnVehicleDelay = 30.000002;
 respawnTemplates[] = {"MenuPosition"};
 respawnOnStart = 0;
 
-reviveUnconsciousStateMode = 1;
-reviveRequiredItems = 2;
-reviveDelay = 10;
-reviveForceRespawnDelay = 3;
-reviveBleedOutDelay = 300;
-reviveMedicSpeedMultiplier = 2;
-reviveRequiredTrait = 0;
+// reviveUnconsciousStateMode = 1;
+// reviveRequiredItems = 2;
+// reviveDelay = 10;
+// reviveForceRespawnDelay = 3;
+// reviveBleedOutDelay = 300;
+// reviveMedicSpeedMultiplier = 2;
+// reviveRequiredTrait = 0;
 
 wreckManagerMode = 3;
 wreckLimit = 50;
