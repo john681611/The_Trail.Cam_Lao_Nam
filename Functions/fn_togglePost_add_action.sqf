@@ -4,16 +4,16 @@ if!(isServer) exitWith{};
 	"Deploy/UnDeploy",										// Title of the action
 	"\a3\ui_f\data\IGUI\Cfg\holdactions\holdAction_connect_ca.paa",	// Idle icon shown on screen
 	"\a3\ui_f\data\IGUI\Cfg\holdactions\holdAction_connect_ca.paa",	// Progress icon shown on screen
-	"_this distance _target < 3 and speed _target < 5",						// Condition for the action to be shown
-	"_caller distance _target < 3 and (count ([_target, ['ColorGreen'], 300] call TR_fnc_getNearbyMarkers)) == 0",						// Condition for the action to progress
+	"_this distance _target < 8 and speed _target < 5",						// Condition for the action to be shown
+	"_caller distance _target < 8 and (count ([_target, ['ColorGreen'], 200] call TR_fnc_getNearbyMarkers)) == 0",						// Condition for the action to progress
 	{},													// Code executed when action starts
 	{},													// Code executed on every progress tick
 	{   
 		_target remoteExec ["TR_fnc_togglePost", 2];
 	},
 	{
-		if((count ([_target, ['ColorGreen'], 300] call TR_fnc_getNearbyMarkers)) > 0) then {
-			hint "Area isn't secure!";
+		if((count ([_target, ['ColorGreen'], 200] call TR_fnc_getNearbyMarkers)) > 0) then {
+			hint "Area isn't secure! Clear within 200m";
 		};
 	},													// Code executed on interrupted
 	[],													// Arguments passed to the scripts as _this select 3
