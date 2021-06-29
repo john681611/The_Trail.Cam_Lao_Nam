@@ -13,7 +13,8 @@ while {true} do {
 		_x setMarkerAlpha _alpha;
 	} forEach markers;
 	if(!(isNil "trailState")) then {
-		uiNamespace setVariable ["trailState", trailState];
+		publicVariable "trailState";
+		[uiNamespace,["trailState",trailState]] remoteExec ['setVariable',0];
 		"trailStateMarker" setMarkerText format ["Trail state: %1", trailState];
 	};
 };
