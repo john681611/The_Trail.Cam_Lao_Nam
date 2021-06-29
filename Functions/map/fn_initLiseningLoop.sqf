@@ -12,6 +12,10 @@ while {true} do {
 		});
 		_x setMarkerAlpha _alpha;
 	} forEach markers;
+	if(!(isNil "trailState")) then {
+		uiNamespace setVariable ["trailState", trailState];
+		"trailStateMarker" setMarkerText format ["Trail state: %1", trailState];
+	};
 };
 
 

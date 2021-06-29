@@ -29,14 +29,13 @@ _capTime = 50;
 _searchTime = 10;
 _maxJump = 3000;
 trailState = "building";
-uiNamespace setVariable ["trailState", trailState];
 while {(getMarkerPos tgt) distance2D (getMarkerPos _loc) > 750 and trailState == "building"} do {
 	_opts = [];
 	_distanceLimit = 110;
 	while {count _opts == 0} do {
 		if(_distanceLimit > _maxJump) exitWith {
 			trailState = "abandoned";
-			uiNamespace setVariable ["trailState", trailState];
+		
 		};
 		_opts = [_loc, tgt,  markers, trail + excludeTrail, _distanceLimit] call _getNearbyMarkers;
 		_distanceLimit = _distanceLimit + 110;
@@ -69,7 +68,6 @@ while {(getMarkerPos tgt) distance2D (getMarkerPos _loc) > 750 and trailState ==
 
 if(trailState == "building") then {
 	trailState = "supplying";
-	uiNamespace setVariable ["trailState", trailState];
 	sleep 600;
 	if(trailState == "supplying") then {
 		[] spawn TR_fnc_spawnBastion;

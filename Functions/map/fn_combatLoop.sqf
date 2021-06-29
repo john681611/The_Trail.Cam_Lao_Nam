@@ -21,8 +21,6 @@ params ["_markers"];
 						};
 						[excludeTrail, ([_x, _markers, [], 500] call TR_fnc_getAjacentMarkers)] call BIS_fnc_arrayPushStack;
 						trailState = "reeling";
-						
-						uiNamespace setVariable ["trailState", trailState];
 					};
 				}
 			} forEach _activeZones;

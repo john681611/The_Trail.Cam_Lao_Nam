@@ -1,5 +1,4 @@
 trailState = "attacking";
-uiNamespace setVariable ["trailState", trailState];
 private _faction = selectRandom factions;
 private _playerCount = (count allPlayers) min 8;
 private _forceConfig = createHashMapFromArray [
@@ -16,5 +15,4 @@ _triggerCount =  3 max floor ((count _spawnedUnits)/10);
 waitUntil {sleep 5; {alive _x} count _spawnedUnits < _triggerCount};
 hint "attack over";
 trailState = "supplying";
-uiNamespace setVariable ["trailState", trailState];
 [] spawn TR_fnc_generateTrail;
