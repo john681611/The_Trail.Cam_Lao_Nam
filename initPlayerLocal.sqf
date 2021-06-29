@@ -34,23 +34,25 @@ waitUntil {!(isNil "listeners")};
 listeners pushBackUnique [player,200];
 publicVariable "listeners";
 while {true} do {
-
 	with uiNamespace do {
-		if(!(isNil("trailState"))) then {
-			if(stateIcon isEqualTo controlNull) then {
-				stateIcon = findDisplay 46 ctrlCreate ["CT_STATIC", 1579];
+		if(!(isNil "trailState")) then {
+			if(isNil "stateIcon") then {
+				stateIcon = findDisplay 46 ctrlCreate ["RscPicture", 1579];
+			} else {
+				if(stateIcon isEqualTo controlNull) then {
+					stateIcon = findDisplay 46 ctrlCreate ["RscPicture", 1579];
+				};
 			};
 			_ctrlWidth = 0.1; 
 			_ctrlHeight = 0.1; 
 			_xpos = ( safeZoneX + ( safeZoneWAbs / 2 )) - ( _ctrlWidth / 2 ) ; 
 			_y = (safeZoneY)  + 0.01; 
 			stateIcon ctrlSetPosition [ _xpos, _y, _ctrlWidth, _ctrlHeight ];
-			stateIcon ctrlSetTextColor [1,0,1,1];
+			stateIcon ctrlSetTextColor [1,0,0,1];
 			stateIcon ctrlSetText format["Media\TrailState\%1.paa", trailState];
 			stateIcon ctrlCommit 0;
 		};
 	};
 	sleep 5;
-	// ctrlDelete (uiNamespace getVariable "stateIcon"); 
 };
 
