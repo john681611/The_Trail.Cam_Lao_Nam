@@ -4,7 +4,7 @@ if!(isServer) exitWith{};
 	"Search",										// Title of the action
 	"\a3\ui_f\data\IGUI\Cfg\holdactions\holdAction_search_ca.paa",	// Idle icon shown on screen
 	"\a3\ui_f\data\IGUI\Cfg\holdactions\holdAction_search_ca.paa",	// Progress icon shown on screen
-	"_this distance _target < 3 and !(alive _target)",						// Condition for the action to be shown
+	"_this distance _target < 3 and !(alive _target) and _target getVariable ['searched', false]",						// Condition for the action to be shown
 	"true",						// Condition for the action to progress
 	{
 		_target disableAI "Move";

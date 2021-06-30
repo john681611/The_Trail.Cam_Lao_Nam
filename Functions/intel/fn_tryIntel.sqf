@@ -61,3 +61,5 @@ _mkr setMarkerAlpha 1;
 if(_canKill && (random 10) < 2) then {
 	_unit setDamage 1;
 };
+
+_unit setVariable ["searched", true, true];
