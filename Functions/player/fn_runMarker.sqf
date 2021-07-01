@@ -9,9 +9,11 @@ call {while {true} do
             if ((getMarkerColor (format ["%1_marker",(vehicle player)])) =="") then {
               (vehicle player) remoteExec ["TR_fnc_vehicleMarker", 2, false];
             };
-            _marker setMarkerText "";
+            _marker setMarkerTextLocal "";
+            _marker setMarkerAlpha 0;
           } else {
-            _marker setMarkerText profileName;
+            _marker setMarkerTextLocal profileName;
+            _marker setMarkerAlpha 0;
           };
           if((lifeState player) == "INCAPACITATED") then {
             _marker setMarkerColor "ColorRed";

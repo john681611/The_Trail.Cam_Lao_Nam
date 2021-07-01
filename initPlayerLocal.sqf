@@ -30,6 +30,7 @@ player createDiaryRecord ["Settings & Keybinds", ["Settings & Keybinds", "
 "If this is your first time check out the Field Manual.",
 "Follow the server rules and respect others."];
 
+[[player]] remoteExec ["TR_fnc_addToAllCurators", 2];
 waitUntil {!(isNil "listeners")};
 listeners pushBackUnique [player,200];
 publicVariable "listeners";

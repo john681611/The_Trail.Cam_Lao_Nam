@@ -86,7 +86,7 @@ params ["_markers"];
 					deleteVehicle _x;	
 				} forEach units _grp;
 				deleteGroup _grp;
-				_x setMarkerBrush "Solid"; //DEBUG
+				// _x setMarkerBrush "Solid"; //DEBUG
 				_activeZones deleteAt _x;
 				
 			} forEach _needsDeactivatingKeys;
