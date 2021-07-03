@@ -28,4 +28,6 @@ excludeTrail = [];
 
 
 [markers] spawn TR_fnc_combatLoop;
+addMissionEventHandler ["HandleDisconnect",{deleteMarker format["%1",(_this select 2)]; deletevehicle (_this select 0)}];
 hint "Finished setting up the map";
+

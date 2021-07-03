@@ -20,7 +20,7 @@ if(count (keys _cache) == 0 OR ("RESETMAPCACHE" call BIS_fnc_getParamValue == 1)
 
 markers = [];
 {
-	if!(_y inArea safezone) then {
+	if!(_y inArea safezone or _y inArea safezone2) then {
 		_mark = createMarker [_x, _y];
 		_mark setMarkerColorLocal "ColorBlue";
 		_mark setMarkerShapeLocal "RECTANGLE";

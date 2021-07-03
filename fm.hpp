@@ -59,4 +59,12 @@ class Trail
 		arguments[] = {
 		};
 	};
+	class RadioSupport
+	{
+		displayName = "Radio Support";
+		displayNameShort = "Radio Support";
+		description = "Radio support is available if you have a suitable backpack or are in a suitable aircraft.";
+		arguments[] = {
+		};
+	};
 };

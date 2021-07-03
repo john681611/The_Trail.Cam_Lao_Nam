@@ -1,6 +1,7 @@
 #include "Modules\outlw_magRepack\MagRepack_config.hpp"
 #include "Modules\CHVD\dialog.hpp"
 #include "logistics.hpp"
+#include "radioSupport.hpp"
 briefingName = "The Trail 0.1.0";
 onLoadName = "The Trail 0.1.0";
 overviewText = "The Trail 0.1.0";
@@ -18,12 +19,12 @@ respawnOnStart = 0;
 
 
 wreckManagerMode = 3;
-wreckLimit = 50;
-wreckRemovalMinTime = 3600;
-wreckRemovalMaxTime = 3600;
+wreckLimit = 25;
+wreckRemovalMinTime = 600;
+wreckRemovalMaxTime = 1200;
 corpseManagerMode = 1;
-corpseLimit = 300;
-corpseRemovalMinTime = 3600;
+corpseLimit = 100;
+corpseRemovalMinTime = 600;
 minPlayerDistance = 500;
 
 // cba_settings_hasSettingsFile = 1;

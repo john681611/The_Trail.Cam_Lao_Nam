@@ -1,3 +1,5 @@
+
+_playerMarkerMap = createHashMap;
 while {true} do {
 	sleep 5;
 	{
@@ -17,6 +19,10 @@ while {true} do {
 		[uiNamespace,["trailState",trailState]] remoteExec ['setVariable',0];
 		"trailStateMarker" setMarkerText format ["Trail state: %1", trailState];
 	};
+
+	{
+		
+	} forEach allPlayers;
 };
 
 

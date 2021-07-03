@@ -1,8 +1,12 @@
-_marker = createMarker [ format["%1",getPlayerUID player], position player ];
+_marker = getPlayerUID player;
+
+if !((getPlayerUID player) in allMapMarkers) then {
+  _marker = createMarker [ format["%1",getPlayerUID player], position player ];
+};
+
 _marker setMarkerColorLocal "ColorBLUFOR";
 _marker setMarkerTypeLocal  "mil_triangle";
 _marker setMarkerTextLocal profileName;
-addMissionEventHandler ["HandleDisconnect",{deleteMarker format["%1",(_this select 2)]; deletevehicle (_this select 0)}];
 call {while {true} do
         {
           if ((vehicle player) != player) then {
@@ -13,7 +17,7 @@ call {while {true} do
             _marker setMarkerAlpha 0;
           } else {
             _marker setMarkerTextLocal profileName;
-            _marker setMarkerAlpha 0;
+            _marker setMarkerAlpha 1;
           };
           if((lifeState player) == "INCAPACITATED") then {
             _marker setMarkerColor "ColorRed";

@@ -1,7 +1,9 @@
 params ["_markers"];
+	_activeZoneLimit = 15;
+	_civLimit = 8; 
 	_activeZones = createHashMap;
 	while {true} do {
-		sleep 3;
+		sleep 10;
 		if(trailState !="attacking") then {
 			{
 				if({alive _x} count (units _y) == 0)then {
@@ -26,14 +28,27 @@ params ["_markers"];
 			} forEach _activeZones;
 
 			_triggerPlayers = allPlayers select {getPosATL _x select 2 < 50  AND (speed _x) < 100}; //don't care about flying players over 50m or going over 100kmh
-			_needActivating = _markers select { 
-				_mrk = _x; 
-				(getMarkerColor _x) == "ColorOpfor" AND !(_x in _activeZones) AND (selectMin (allPlayers apply {_x distance2D (getMarkerPos _mrk)})) < 300 
+			_needActivating = [];
+			_needCiviActivating = [];
+			if(count _activeZones < _activeZoneLimit) then {
+				_needActivating = _markers select { 
+					_mrk = _x; 
+					(getMarkerColor _x) == "ColorOpfor" AND !(_x in _activeZones) AND (selectMin (allPlayers apply {_x distance2D (getMarkerPos _mrk)})) < 300 
 				};
-			_needCiviActivating = _markers select { 
-				_mrk = _x; 
-				(getMarkerColor _x) in ["ColorBlue", "ColorGreen"] AND !(_x in _activeZones) AND (selectMin (allPlayers apply {_x distance2D (getMarkerPos _mrk)})) < 200 and (random 10) < 1
+				if(count _activeZones < _civLimit) then {
+					_needCiviActivating = _markers select { 
+						_mrk = _x; 
+						(getMarkerColor _x) in ["ColorBlue", "ColorGreen"] AND !(_x in _activeZones) AND (selectMin (allPlayers apply {_x distance2D (getMarkerPos _mrk)})) < 200 and (random 10) < 1
+					};
 				};
+				if(((count _activeZones) + (count _needActivating)) > _activeZoneLimit) then {
+					_needCiviActivating = [];
+					_needActivating = _needActivating select [0, 3];
+				};
+			} else {
+				// DEBUG
+				// systemChat format["Active Zone limit Reached no more zones will spawn. ActiveZoneCount: %1", count _activeZones];
+			};
 			_needsDeactivatingKeys = (keys _activeZones) select {
 				_mrk = _x;
 				(selectMin (_triggerPlayers apply {_x distance2D (getMarkerPos _mrk)})) > 400
@@ -56,6 +71,14 @@ params ["_markers"];
 				if(random 10 < 1) then {
 					_unit = _grp createUnit ["vn_o_men_nva_01", getMarkerPos _mkr, [], 50, "NONE"];
 					_unit spawn TR_fnc_addHostileIntelAction;
+				};
+				if(random 10 < 11 and count ((getMarkerPos _mkr) nearRoads 50) > 0) then {
+					_veh = [_mkr, 50,(["VC", "Car"] call TR_fnc_getUnits), true] call TR_fnc_spawnVehicle;
+					(crew _veh) join _grp;
+				};
+				if(random 10 < 11) then {
+					_veh = [_mkr, 50,(["VC", "turret"] call TR_fnc_getUnits), true] call TR_fnc_spawnVehicle;
+					(crew _veh) join _grp;
 				};
 				[units _grp] remoteExec ["TR_fnc_addToAllCurators", 2];
 				[_grp, (getMarkerPos _x) , 50, 3, 0.1, 0.1, true] call CBAEXT_fnc_taskDefend;

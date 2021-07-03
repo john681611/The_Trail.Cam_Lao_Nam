@@ -10,13 +10,11 @@ if!(isServer) exitWith{};
 	{},													// Code executed on every progress tick
 	{   
 		[_target, 6000] call TR_fnc_tryIntel;
-	},
-	{},	
-	{
-	},													// Code executed on interrupted
+	},	
+	{},													// Code executed on interrupted
 	[],													// Arguments passed to the scripts as _this select 3
 	5,													// Action duration [s]
-	999,													// Priority
+	1.4,													// Priority
 	true,												// Remove on completion
 	false												// Show in unconscious state
 ] remoteExec ["BIS_fnc_holdActionAdd", 0];	// MP compatible implementation
