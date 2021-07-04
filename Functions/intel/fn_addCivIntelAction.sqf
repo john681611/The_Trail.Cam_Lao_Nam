@@ -7,15 +7,15 @@ if!(isServer) exitWith{};
 	"_this distance _target < 3 and (alive _target) and _target getVariable ['notSearched', true]",						// Condition for the action to be shown
 	"true",						// Condition for the action to progress
 	{
-		_target disableAI "MOVE";
+		doStop _target;
 	},													// Code executed when action starts
 	{},													// Code executed on every progress tick
 	{   
 		[_target, 4000, (count ([_target, ['ColorBlue'], 100] call TR_fnc_getNearbyMarkers)) > 0] call TR_fnc_tryIntel;
-		_target enableAI "MOVE";
+		_target doFollow _target;
 	},
 	{
-		_target enableAI "MOVE";
+		_target doFollow _target;
 	},													// Code executed on interrupted
 	[],													// Arguments passed to the scripts as _this select 3
 	5,													// Action duration [s]

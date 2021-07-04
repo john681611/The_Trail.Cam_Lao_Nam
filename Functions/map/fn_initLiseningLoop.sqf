@@ -16,6 +16,7 @@ while {true} do {
 	} forEach markers;
 	if(!(isNil "trailState")) then {
 		publicVariable "trailState";
+		publicVariable "trail";
 		[uiNamespace,["trailState",trailState]] remoteExec ['setVariable',0];
 		"trailStateMarker" setMarkerText format ["Trail state: %1", trailState];
 	};
