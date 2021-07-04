@@ -72,11 +72,11 @@ params ["_markers"];
 					_unit = _grp createUnit ["vn_o_men_nva_01", getMarkerPos _mkr, [], 50, "NONE"];
 					_unit spawn TR_fnc_addHostileIntelAction;
 				};
-				if(random 10 < 11 and count ((getMarkerPos _mkr) nearRoads 50) > 0) then {
+				if(random 10 < 1 and count ((getMarkerPos _mkr) nearRoads 50) > 0) then {
 					_veh = [_mkr, 50,(["VC", "Car"] call TR_fnc_getUnits), true] call TR_fnc_spawnVehicle;
 					(crew _veh) join _grp;
 				};
-				if(random 10 < 11) then {
+				if(random 10 < 1) then {
 					_veh = [_mkr, 50,(["VC", "turret"] call TR_fnc_getUnits), true] call TR_fnc_spawnVehicle;
 					(crew _veh) join _grp;
 				};
