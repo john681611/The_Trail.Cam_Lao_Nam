@@ -28,13 +28,14 @@ class IA
 		class generateTrail{};
 		class getAjacentMarkers{};
 		class generateAOE{};
-		class initLiseningLoop{};
-		class initActiveAreaLoop{};
-		class combatLoop{};
+		class liseningPass{};
+		class activeAreaPass{};
+		class combatPass{};
 		class spawnAO{};
 		class spawnBastion{};
 		class trackPost{};
 		class getNearbyMarkers{};
+		class initMainLoop{};
 	}
 
 	class INTEL
