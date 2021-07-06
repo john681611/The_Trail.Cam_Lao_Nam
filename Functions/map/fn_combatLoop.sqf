@@ -1,9 +1,7 @@
-params ["_markers"];
 	_activeZoneLimit = 15;
 	_civLimit = 8; 
 	_activeZones = createHashMap;
 	while {true} do {
-		sleep 10;
 		if(trailState !="attacking") then {
 			{
 				if({alive _x} count (units _y) == 0)then {
@@ -21,7 +19,7 @@ params ["_markers"];
 						} else {
 							trail = [trail select 0];
 						};
-						[excludeTrail, ([_x, _markers, [], 500] call TR_fnc_getAjacentMarkers)] call BIS_fnc_arrayPushStack;
+						[excludeTrail, ([_x, activeAreaMarkers, [], 500] call TR_fnc_getAjacentMarkers)] call BIS_fnc_arrayPushStack;
 						trailState = "reeling";
 					};
 				}
@@ -31,12 +29,12 @@ params ["_markers"];
 			_needActivating = [];
 			_needCiviActivating = [];
 			if(count _activeZones < _activeZoneLimit) then {
-				_needActivating = _markers select { 
+				_needActivating = activeAreaMarkers select { 
 					_mrk = _x; 
 					(getMarkerColor _x) == "ColorOpfor" AND !(_x in _activeZones) AND (selectMin (allPlayers apply {_x distance2D (getMarkerPos _mrk)})) < 300 
 				};
 				if(count _activeZones < _civLimit) then {
-					_needCiviActivating = _markers select { 
+					_needCiviActivating = activeAreaMarkers select { 
 						_mrk = _x; 
 						(getMarkerColor _x) in ["ColorBlue", "ColorGreen"] AND !(_x in _activeZones) AND (selectMin (allPlayers apply {_x distance2D (getMarkerPos _mrk)})) < 200 and (random 10) < 1
 					};
@@ -114,5 +112,5 @@ params ["_markers"];
 				
 			} forEach _needsDeactivatingKeys;
 		};
-
+		sleep 10;
 	};

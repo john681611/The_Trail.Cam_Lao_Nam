@@ -29,6 +29,7 @@ class IA
 		class getAjacentMarkers{};
 		class generateAOE{};
 		class initLiseningLoop{};
+		class initActiveAreaLoop{};
 		class combatLoop{};
 		class spawnAO{};
 		class spawnBastion{};

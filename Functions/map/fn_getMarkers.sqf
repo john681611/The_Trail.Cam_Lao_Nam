@@ -27,6 +27,6 @@ markers = [];
 		_mark setMarkerBrushLocal "Solid";
 		_mark setMarkerAlphaLocal 0; 
 		_mark setMarkerSize [50,50];
-		markers pushBack _mark;
+		markers pushBackUnique _mark;
 	}
 } forEach _locations;

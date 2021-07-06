@@ -1,29 +1,32 @@
 
-_playerMarkerMap = createHashMap;
 while {true} do {
-	sleep 5;
-	{
-		listeners = listeners select {alive (_x select 0)  && !(isObjectHidden (_x select 0))};
-		publicVariable "listeners";
-		_mkrPos = (getMarkerPos _x);
-		_alpha = selectMax (listeners apply {
-			if(_mkrPos distance2D (_x select 0) > _x select 1) then {
+	listeners = listeners select {alive (_x select 0)  && {!(isObjectHidden (_x select 0))}};
+	publicVariable "listeners";
+	private _markerCount = count activeAreaMarkers;
+	for "_i" from 0 to _markerCount -1 do {
+		if(count activeAreaMarkers < _i) exitWith {};
+		private _mrker = activeAreaMarkers select _i;
+		private _mkrPos = (getMarkerPos _mrker);
+		private _alpha = selectMax (listeners apply {
+			private _pos =  _x select 0;
+			private _range = _x select 1;
+			private _distance = _mkrPos distance2D _pos;
+			if(_distance > _range) then {
 				0
 			};
-			parseNumber (1 - ((_mkrPos distance2D (_x select 0))/(_x select 1)) toFixed 1)
+			parseNumber (1 - ((_distance)/(_range)) toFixed 1)
 		});
-		_x setMarkerAlpha _alpha;
-	} forEach markers;
+		if(markerAlpha _mrker  != _alpha) then {
+			_mrker setMarkerAlpha _alpha;
+		};
+	};
 	if(!(isNil "trailState")) then {
 		publicVariable "trailState";
 		publicVariable "trail";
 		[uiNamespace,["trailState",trailState]] remoteExec ['setVariable',0];
 		"trailStateMarker" setMarkerText format ["Trail state: %1", trailState];
 	};
-
-	{
-		
-	} forEach allPlayers;
+	sleep 10;
 };
 
 

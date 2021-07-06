@@ -10,10 +10,10 @@ if!(isServer) exitWith{};
 	{},													// Code executed on every progress tick
 	{  if(typeOf _target == "vn_b_ammobox_supply_03") then {
 			//Aid AOE
-			[[_target], markers, 3, "ColorGreen",["ColorOpfor", "ColorBlue"]] spawn TR_fnc_generateAOE;
+			[[_target], activeAreaMarkers, 3, "ColorGreen",["ColorOpfor", "ColorBlue"]] spawn TR_fnc_generateAOE;
 		} else {
 			//Food AOE
-			[[_target], markers, 3, "ColorGreen",["ColorOpfor","ColorOrange"]] spawn TR_fnc_generateAOE;				// Code executed on completion
+			[[_target], activeAreaMarkers, 3, "ColorGreen",["ColorOpfor","ColorOrange"]] spawn TR_fnc_generateAOE;				// Code executed on completion
 		};
 	},
 	{},													// Code executed on interrupted
