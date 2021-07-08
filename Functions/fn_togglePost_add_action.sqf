@@ -13,7 +13,7 @@ if!(isServer) exitWith{};
 	},
 	{
 		if((count ([_target, ['ColorGreen'], 200] call TR_fnc_getNearbyMarkers)) > 0) then {
-			hint "Area isn't secure! Clear within 200m";
+			hint "Area isn't secure! Zones within 200m need to be friendly.";
 		};
 	},													// Code executed on interrupted
 	[],													// Arguments passed to the scripts as _this select 3

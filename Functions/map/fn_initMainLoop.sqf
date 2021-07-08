@@ -19,7 +19,7 @@ while {true} do {
 		_loopCount = 0;
 	};
 	_loopCount = _loopCount + 1;
-	sleep 10;
+	sleep 8;
 };
 
 

@@ -1,9 +1,11 @@
 private _activeZoneLimit = 15;
 private _civLimit = 8; 
-activeZones = createHashMap;
+if(isNil "activeZones") then {
+	activeZones = createHashMap;
+};
 if(trailState == "attacking") exitWith {};
 {
-	if({alive _x} count (units _y) == 0)then {
+	if({alive _x} count (units _y) == 0) then {
 		if((getMarkerColor _x) in ["ColorBlue", "ColorGreen"]) then {
 			_x setMarkerColor "ColorOpfor";
 		} else {
@@ -30,7 +32,8 @@ _needCiviActivating = [];
 if(count activeZones < _activeZoneLimit) then {
 	_needActivating = activeAreaMarkers select { 
 		_mrk = _x; 
-		(getMarkerColor _x) == "ColorOpfor" AND !(_x in activeZones) AND (selectMin (allPlayers apply {_x distance2D (getMarkerPos _mrk)})) < 300 
+		_minDist = (selectMin (allPlayers apply {_x distance2D (getMarkerPos _mrk)}));
+		(getMarkerColor _x) == "ColorOpfor" AND !(_x in activeZones) AND  _minDist < 500 AND _minDist > 100 
 	};
 	if(count activeZones < _civLimit) then {
 		_needCiviActivating = activeAreaMarkers select { 
@@ -48,7 +51,7 @@ if(count activeZones < _activeZoneLimit) then {
 };
 _needsDeactivatingKeys = (keys activeZones) select {
 	_mrk = _x;
-	(selectMin (_triggerPlayers apply {_x distance2D (getMarkerPos _mrk)})) > 400
+	(selectMin (_triggerPlayers apply {_x distance2D (getMarkerPos _mrk)})) > 700
 }; 
 
 

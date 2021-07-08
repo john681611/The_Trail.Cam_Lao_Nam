@@ -2,11 +2,11 @@
 #include "Modules\CHVD\dialog.hpp"
 #include "logistics.hpp"
 #include "radioSupport.hpp"
-briefingName = "The Trail 0.1.2";
-onLoadName = "The Trail 0.1.2";
-overviewText = "The Trail 0.1.2";
+briefingName = "The Trail 0.1.3";
+onLoadName = "The Trail 0.1.3";
+overviewText = "The Trail 0.1.3";
 author = "INF_Mike64";
-onLoadMission = "The Trail 0.1.2";
+onLoadMission = "The Trail 0.1.3";
 // loadScreen = "resistance_ingame_logo.paa";
 disabledAI = 1;
 enableDebugConsole = 1;
@@ -50,6 +50,33 @@ class Params
 		values[] = {false,true}; // Values; must be integers; has to have the same number of elements as 'texts'
 		texts[] = {"False","True"}; // Description of each selectable item
 		default = false; // Default value; must be listed in 'values' array, otherwise 0 is used
+               // Default values that are not whole numbers do not work. Param will default to 0 (or 1 if defined)
+	};
+
+	class CAPTIME
+	{
+		title = "Trail to Capture the zone"; // Param name visible in the list
+		values[] = {25,50,75,100}; // Values; must be integers; has to have the same number of elements as 'texts'
+		texts[] = {"20s","50s","75s","100s"}; // Description of each selectable item
+		default = 50; // Default value; must be listed in 'values' array, otherwise 0 is used
+               // Default values that are not whole numbers do not work. Param will default to 0 (or 1 if defined)
+	};
+
+	class SUPPLYTIME
+	{
+		title = "Supplying Time Before Attack on Saigon"; // Param name visible in the list
+		values[] = {400,600,800,1200}; // Values; must be integers; has to have the same number of elements as 'texts'
+		texts[] = {"7Mins","10Mins","14mins", "20mins"}; // Description of each selectable item
+		default = 600; // Default value; must be listed in 'values' array, otherwise 0 is used
+               // Default values that are not whole numbers do not work. Param will default to 0 (or 1 if defined)
+	};
+
+	class REELTIME
+	{
+		title = "Reeling Time when trail cut"; // Param name visible in the list
+		values[] = {200,300,500,600}; // Values; must be integers; has to have the same number of elements as 'texts'
+		texts[] = {"4mins","5mins", "9mins", "10mins"}; // Description of each selectable item
+		default = 300; // Default value; must be listed in 'values' array, otherwise 0 is used
                // Default values that are not whole numbers do not work. Param will default to 0 (or 1 if defined)
 	};
 };

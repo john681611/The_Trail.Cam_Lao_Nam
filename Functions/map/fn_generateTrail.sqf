@@ -19,13 +19,12 @@ _getNearbyMarkers = {
 _getNextPos = {
 	params ["_target","_marker", "_markers"];
 	_localPos = [_markers, [getMarkerPos _target], {(getMarkerPos _x) distance2D _input0 }, "ASCEND"] call BIS_fnc_sortBy;
-
 	_localPos select 0
 };
 
 private _loc = trail select (count trail -1);
 tgt = "CAPITAL_BASE";
-_capTime = 50;
+_capTime = ("CAPTIME" call BIS_fnc_getParamValue);
 _searchTime = 10;
 _maxJump = 3000;
 trailState = "building";
@@ -35,12 +34,10 @@ while {(getMarkerPos tgt) distance2D (getMarkerPos _loc) > 750 and trailState ==
 	while {count _opts == 0} do {
 		if(_distanceLimit > _maxJump) exitWith {
 			trailState = "abandoned";
-		
 		};
 		_opts = [_loc, tgt,  markers, trail + excludeTrail, _distanceLimit] call _getNearbyMarkers;
 		_distanceLimit = _distanceLimit + 110;
 		sleep _searchTime;
-
 	};
 	if(trailState == "abandoned") exitWith {
 		[] spawn TR_fnc_spawnAO;
@@ -68,11 +65,11 @@ while {(getMarkerPos tgt) distance2D (getMarkerPos _loc) > 750 and trailState ==
 
 if(trailState == "building") then {
 	trailState = "supplying";
-	sleep 600;
+	sleep ("SUPPLYTIME" call BIS_fnc_getParamValue);
 	if(trailState == "supplying") then {
 		[] spawn TR_fnc_spawnBastion;
 	};
 } else {
-	sleep 300;
+	sleep ("REELTIME" call BIS_fnc_getParamValue);
 	[] spawn TR_fnc_generateTrail;
 }
