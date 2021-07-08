@@ -27,8 +27,15 @@ private ["_Location"];
     ["Outpost Able", rad1],
     ["Outpost Baker", rad2],
     ["Outpost Charlie", rad3],
-    ["Outpost Dog", rad4]
+    ["Outpost Dog", rad4],
+    ["Squad Lead", leader player]
  ];
+
+ if((count allPlayers) < 5 && leader player != player) then {
+    _unit= leader player;
+    _name = format ["SL: %1", name _unit];
+   _missionsData append [[getPos  _unit,to_Base,_name,_name,"","",1,[getPos _unit]]];
+ };
 
 
  disableserialization;

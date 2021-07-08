@@ -15,6 +15,7 @@ class IA
 		class spawnVehicle {};
 		class teleport{};
 		class teleport_add_action{};
+		class spawnSupplies_add_action{};
 		class distribute_add_action{};
 		class togglePost_add_action{};
 		class togglePost{};

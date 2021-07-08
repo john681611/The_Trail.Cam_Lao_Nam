@@ -8,7 +8,7 @@ class EditorData
 	toggles=1;
 	class ItemIDProvider
 	{
-		nextID=297;
+		nextID=303;
 	};
 	class MarkerIDProvider
 	{
@@ -16,10 +16,10 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={16058.165,133.61769,3556.1965};
-		dir[]={0.29064459,-0.72347778,0.62618339};
-		up[]={0.30459276,0.69034767,0.6562342};
-		aside[]={0.90705514,-1.4901161e-008,-0.42101192};
+		pos[]={15649.574,39.98,7178.3252};
+		dir[]={0.80252713,-0.46995261,0.36755398};
+		up[]={0.42727244,0.88269126,0.19568916};
+		aside[]={0.41640136,-2.6921043e-009,-0.90918225};
 	};
 };
 binarizationWanted=0;
@@ -206,7 +206,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=60;
+		items=62;
 		class Item0
 		{
 			dataType="Object";
@@ -1425,7 +1425,7 @@ class Mission
 		class Item32
 		{
 			dataType="Marker";
-			position[]={15707.653,14.98,7200.9941};
+			position[]={15695.644,14.98,7166.1558};
 			name="supplySpawn";
 			type="Empty";
 			id=162;
@@ -1447,6 +1447,29 @@ class Mission
 			};
 			id=163;
 			type="Land_vn_latrine_01";
+			class CustomAttributes
+			{
+				class Attribute0
+				{
+					property="allowDamage";
+					expression="_this allowdamage _value;";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"BOOL"
+								};
+							};
+							value=0;
+						};
+					};
+				};
+				nAttributes=1;
+			};
 		};
 		class Item34
 		{
@@ -2739,6 +2762,65 @@ class Mission
 			};
 			id=296;
 			type="vn_module_artillery";
+		};
+		class Item60
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={15693.806,16.561325,7150.0029};
+				angles[]={0,3.1602154,0};
+			};
+			side="Empty";
+			flags=5;
+			class Attributes
+			{
+				init="call{this call TR_fnc_spawnSupplies_add_action;}";
+				disableSimulation=1;
+			};
+			id=300;
+			type="Land_vn_hootch_02_03";
+			atlOffset=9.5367432e-007;
+			class CustomAttributes
+			{
+				class Attribute0
+				{
+					property="allowDamage";
+					expression="_this allowdamage _value;";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"BOOL"
+								};
+							};
+							value=0;
+						};
+					};
+				};
+				nAttributes=1;
+			};
+		};
+		class Item61
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={15692.386,16.602055,7154.4722};
+				angles[]={0,3.1584275,0};
+			};
+			side="Empty";
+			flags=1;
+			class Attributes
+			{
+			};
+			id=302;
+			type="vn_sign_fob_08";
+			atlOffset=1.6220551;
 		};
 	};
 	class Connections

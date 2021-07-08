@@ -19,8 +19,8 @@ class vn_logistics
 		};
 		class vn_defaults_tiny
 		{
-			inventory_max_weight = 50;
-			inventory_max_size = 1;
+			inventory_max_weight = 100;
+			inventory_max_size = 2.5;
 		};
 		//Jeeps + Small Cars
 		class vn_b_wheeled_m151_01 : vn_defaults_small {};
@@ -318,7 +318,7 @@ class vn_logistics
 		///////////////////
 		class vn_static_tiny 
 		{
-			item_weight = 50;
+			item_weight = 100;
 			item_size = 1;
 			spawn_distance = 2;
 			rotation_offset = 0;
