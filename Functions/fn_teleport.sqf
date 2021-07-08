@@ -27,8 +27,7 @@ private ["_Location"];
     ["Outpost Able", rad1],
     ["Outpost Baker", rad2],
     ["Outpost Charlie", rad3],
-    ["Outpost Dog", rad4],
-    ["Squad Lead", leader player]
+    ["Outpost Dog", rad4]
  ];
 
  if((count allPlayers) < 5 && leader player != player) then {
