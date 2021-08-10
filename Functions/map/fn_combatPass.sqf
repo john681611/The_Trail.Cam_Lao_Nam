@@ -14,13 +14,6 @@ if(trailState == "attacking") exitWith {};
 		deleteGroup _y;
 		activeZones deleteAt _x;
 		if(_x in trail) then {
-			_trailIndex = trail find _x;
-			if(_trailIndex > 5) then {
-				trail = trail select [_trailIndex - 3, count trail];
-			} else {
-				trail = [trail select 0];
-			};
-			[excludeTrail, ([_x, activeAreaMarkers, [], 500] call TR_fnc_getAjacentMarkers)] call BIS_fnc_arrayPushStack;
 			trailState = "reeling";
 		};
 	}

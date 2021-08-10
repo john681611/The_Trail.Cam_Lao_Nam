@@ -14,5 +14,4 @@ sleep 30;
 _triggerCount =  3 max floor ((count _spawnedUnits)/10);
 waitUntil {sleep 5; {alive _x} count _spawnedUnits < _triggerCount};
 hint "attack over";
-trailState = "supplying";
 [] spawn TR_fnc_generateTrail;

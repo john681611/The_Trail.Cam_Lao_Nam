@@ -30,7 +30,7 @@ scriptName "RUBE3\functions\Map\fn_mapDrawLine.sqf";
    marker
 */
 
-private ["_mrk", "_start", "_end", "_color", "_size", "_id", "_dist", "_ang", "_center"];
+private ["_mrk", "_start", "_end", "_color", "_size", "_id", "_dist", "_ang", "_center", "_alpha"];
 
 _mrk = "";
 
@@ -38,6 +38,7 @@ _start = [0,0,0];
 _end = [0,0,0];
 
 _color = "ColorBlack";
+_alpha = 1;
 _size = 5;
 _id = "";
 
@@ -49,6 +50,7 @@ _id = "";
      case "end":   { _end   = _x select 1; };
      case "color": { _color = _x select 1; };
      case "size":  { _size  = _x select 1; };
+     case "alpha":  { _alpha  = _x select 1; };
      case "id":    
      { 
         if ((typeName (_x select 1)) == "STRING") then
@@ -77,6 +79,7 @@ _mrk setMarkerPosLocal _center;
 _mrk setMarkerShapeLocal "RECTANGLE";
 _mrk setMarkerBrushLocal "SOLID";
 _mrk setMarkerColorLocal _color;
+_mrk setMarkerAlphaLocal _alpha;
 _mrk setMarkerSize [_size, _dist];
 
 // return marker

@@ -52,12 +52,13 @@ while {(getMarkerPos tgt) distance2D (getMarkerPos _loc) > 750 and trailState ==
 	};
 	sleep _capTime;
 	trail pushBack _newLoc;
-	// [
-	// 	["start", getMarkerPos _loc],
-	// 	["end", getMarkerPos _newLoc],
-	// 	["color", "ColorYellow"],
-	// 	["size", 10]
-	// ] execVM "drawLine.sqf";  //DEBUG
+	trailMarkers pushBack ([
+		["start", getMarkerPos _loc],
+		["end", getMarkerPos _newLoc],
+		["color", "ColorYellow"],
+		["size", 10],
+		["alpha", 0]
+	] call compile preprocessFileLineNumbers "drawLine.sqf");  //DEBUG
 	_newLoc setMarkerColor "ColorOpfor";
 	[[_newLoc], markers, 5, "ColorOpfor", ["ColorOpfor"]] spawn TR_fnc_generateAOE;
 	_loc = _newLoc;
@@ -70,6 +71,14 @@ if(trailState == "building") then {
 		[] spawn TR_fnc_spawnBastion;
 	};
 } else {
-	sleep ("REELTIME" call BIS_fnc_getParamValue);
-	[] spawn TR_fnc_generateTrail;
+	_trailIndex = trail findif {getMarkerColor _x != "ColorOpfor" && _x != "VC_base"};
+	if(_trailIndex > 5) then {
+		excludeTrail append ([(trail select _trailIndex), activeAreaMarkers, [], 500] call TR_fnc_getAjacentMarkers);
+		trail = trail select {(trail find _x) < _trailIndex - 3};
+		sleep ("REELTIME" call BIS_fnc_getParamValue);
+		[] spawn TR_fnc_generateTrail;
+	} else {
+		trailState = "abandoned";
+		[] spawn TR_fnc_spawnAO;
+	};
 }
