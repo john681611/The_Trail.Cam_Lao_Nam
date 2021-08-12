@@ -15,3 +15,10 @@ for "_i" from 0 to (count activeAreaMarkers) -1 do {
 		_mrker setMarkerAlpha _alpha;
 	};
 };
+
+// Check for wrecks needing respawn
+_list = (getPos wreckLoc) nearObjects ["vn_us_komex_medium_02", 10];
+{
+	[(_x getVariable "respawnVehicle"), { call{(_this select 1) spawn TR_fnc_trackVeh;} }] call VN_ms_module_fnc_vehicleRespawn_respawn;
+	deleteVehicle _x;
+} forEach _list;

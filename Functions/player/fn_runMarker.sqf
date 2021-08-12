@@ -10,21 +10,16 @@ _marker setMarkerTextLocal profileName;
 call {while {true} do
         {
           if ((vehicle player) != player) then {
-            if ((getMarkerColor (format ["%1_marker",(vehicle player)])) =="") then {
-              (vehicle player) remoteExec ["TR_fnc_vehicleMarker", 2, false];
-            };
-            _marker setMarkerTextLocal "";
-            _marker setMarkerAlpha 0;
+            _marker setMarkerAlphaLocal 0;
           } else {
-            _marker setMarkerTextLocal profileName;
-            _marker setMarkerAlpha 1;
+            _marker setMarkerAlphaLocal 1;
           };
           if((lifeState player) == "INCAPACITATED") then {
-            _marker setMarkerColor "ColorRed";
+            _marker setMarkerColorLocal "ColorRed";
           } else {
-            _marker setMarkerColor "ColorBLUFOR";
+            _marker setMarkerColorLocal "ColorBLUFOR";
           };
-          _marker setMarkerPos getPos player;
+          _marker setMarkerPosLocal getPos player;
           _marker setMarkerDir getDir player;
         sleep 0.5;
       };

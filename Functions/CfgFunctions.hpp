@@ -35,6 +35,7 @@ class IA
 		class spawnAO{};
 		class spawnBastion{};
 		class trackPost{};
+		class trackVeh{};
 		class getNearbyMarkers{};
 		class initMainLoop{};
 	}
@@ -52,7 +53,6 @@ class IA
 	{
 		file = "Functions\player";
 		class runMarker{};
-		class vehicleMarker{};
 		class initEarplugs{}
 	}
 };
