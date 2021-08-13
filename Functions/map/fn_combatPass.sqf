@@ -1,3 +1,10 @@
+//THIS WILL LIKELY WORK FOR MOST UNITS BUT TUNNELS NEED THOUGHT
+_count_sub_objectives = {
+	params ["_mkr"];
+	private _values = subObjectives getOrDefault [_mkr, []];
+	{alive _x} count _values
+};
+
 private _activeZoneLimit = 15;
 private _civLimit = 8; 
 if(isNil "activeZones") then {
@@ -5,7 +12,7 @@ if(isNil "activeZones") then {
 };
 if(trailState == "attacking") exitWith {};
 {
-	if({alive _x} count (units _y) == 0) then {
+	if({alive _x} count (units _y) == 0 && (_x call _count_sub_objectives) == 0) then {
 		if((getMarkerColor _x) in ["ColorBlue", "ColorGreen"]) then {
 			_x setMarkerColor "ColorOpfor";
 		} else {

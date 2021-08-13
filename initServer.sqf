@@ -4,14 +4,12 @@ noise = [50, "ColorOpfor", ["ColorOpfor"]] call TR_fnc_setRandomZonesTo;
 illness = [10,  "ColorOrange", []] call TR_fnc_setRandomZonesTo;
 
 
-
-
-
-
 factions = ["VC"];
 trail = ["VC_base"];
 trailMarkers = [];
 excludeTrail = [];
+tunnels = [];
+subObjectives = createHashMap;
 [] spawn TR_fnc_generateTrail;
 
 

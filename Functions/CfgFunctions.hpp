@@ -19,6 +19,7 @@ class IA
 		class distribute_add_action{};
 		class togglePost_add_action{};
 		class togglePost{};
+		class createTunnel{};
 	};
 
 	class MAP

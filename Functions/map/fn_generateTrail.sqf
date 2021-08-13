@@ -52,6 +52,9 @@ while {(getMarkerPos tgt) distance2D (getMarkerPos _loc) > 750 and trailState ==
 	};
 	sleep _capTime;
 	trail pushBack _newLoc;
+	if(count tunnels < 6) then {
+		subObjectives set [_newLoc, ([count tunnels, getMarkerPos _newLoc] call TR_fnc_createTunnel)];
+	};
 	trailMarkers pushBack ([
 		["start", getMarkerPos _loc],
 		["end", getMarkerPos _newLoc],
