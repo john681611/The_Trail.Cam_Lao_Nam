@@ -13,4 +13,7 @@ createVehicleCrew _veh;
 (crew _veh) join _grp;
 _veh allowCrewInImmobile true;
 
+_grp enableDynamicSimulation true;
+_veh enableDynamicSimulation true;
+[[_veh] + (units _grp)] remoteExec ["TR_fnc_addToAllCurators", 2];
 _veh;

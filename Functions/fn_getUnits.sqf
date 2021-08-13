@@ -89,6 +89,22 @@ private _unitMap = createHashMapFromArray ([
 				"vn_o_vc_static_dshkm_low_02", .5,
 				"vn_o_vc_static_pk_high", .5,
 				"vn_o_vc_static_rpd_high", .5
+		]],
+		["AA",[
+				"vn_o_nva_65_static_zpu4", .5,
+				"vn_o_wheeled_btr40_mg_03_nva65", .5,
+				"vn_o_wheeled_z157_mg_02", .5
+		]],
+		["Arty",[
+				"vn_o_vc_static_mortar_type53", .5,
+				"vn_o_vc_static_mortar_type63", .5,
+				"vn_o_vc_static_d44_01", .5
+		]],
+		["Supply",[
+			"vn_b_ammobox_full_11", .5,
+			"vn_o_ammobox_kit_nva", .5,
+			"vn_o_ammobox_full_07", .5,
+			"vn_b_ammobox_full_12", .5
 		]]
 		]
 	],

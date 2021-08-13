@@ -13,10 +13,9 @@ subObjectives = createHashMap;
 [] spawn TR_fnc_generateTrail;
 
 
-
-[noise, markers, 5, "ColorOpfor", ["ColorOrange"]] call TR_fnc_generateAOE;
-[illness, markers, 3, "ColorOrange", ["ColorOpfor"]] call TR_fnc_generateAOE;
-[["CAPITAL_BASE"], markers, 5, "ColorGreen", []] call TR_fnc_generateAOE;
+{_x spawn TR_fnc_spawnSubObjective;} forEach noise;
+[noise, markers, 5, "ColorOpfor", ["ColorOrange"]] spawn TR_fnc_generateAOE;
+[illness, markers, 3, "ColorOrange", ["ColorOpfor"]] spawn TR_fnc_generateAOE;
 
 
 

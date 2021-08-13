@@ -13,6 +13,9 @@ for "_i" from 0 to (count activeAreaMarkers) -1 do {
 	});
 	if(markerAlpha _mrker  != _alpha) then {
 		_mrker setMarkerAlpha _alpha;
+		if(_mrker in subObjectives) then {
+			((subObjectives get _mrker) select 1) setMarkerAlpha _alpha;
+		};	
 	};
 };
 

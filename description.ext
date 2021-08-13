@@ -2,11 +2,11 @@
 #include "Modules\CHVD\dialog.hpp"
 #include "logistics.hpp"
 #include "radioSupport.hpp"
-briefingName = "The Trail 0.1.3";
-onLoadName = "The Trail 0.1.3";
-overviewText = "The Trail 0.1.3";
+briefingName = "The Trail 0.1.4";
+onLoadName = "The Trail 0.1.4";
+overviewText = "The Trail 0.1.4";
 author = "INF_Mike64";
-onLoadMission = "The Trail 0.1.3";
+onLoadMission = "The Trail 0.1.4";
 // loadScreen = "resistance_ingame_logo.paa";
 disabledAI = 1;
 enableDebugConsole = 1;

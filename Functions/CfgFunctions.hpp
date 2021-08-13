@@ -20,6 +20,7 @@ class IA
 		class togglePost_add_action{};
 		class togglePost{};
 		class createTunnel{};
+		class spawnSubObjective{};
 	};
 
 	class MAP

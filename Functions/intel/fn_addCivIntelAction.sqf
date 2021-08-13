@@ -11,7 +11,7 @@ if!(isServer) exitWith{};
 	},													// Code executed when action starts
 	{},													// Code executed on every progress tick
 	{   
-		[_target, 4000, (count ([_target, ['ColorBlue'], 100] call TR_fnc_getNearbyMarkers)) > 0] call TR_fnc_tryIntel;
+		[_target, 4000, (count ([_target, ['ColorBlue'], 200] call TR_fnc_getNearbyMarkers)) > 0] call TR_fnc_tryIntel;
 		_target doFollow _target;
 	},
 	{

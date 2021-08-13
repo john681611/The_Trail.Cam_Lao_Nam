@@ -1,8 +1,10 @@
 //THIS WILL LIKELY WORK FOR MOST UNITS BUT TUNNELS NEED THOUGHT
 _count_sub_objectives = {
 	params ["_mkr"];
-	private _values = subObjectives getOrDefault [_mkr, []];
-	{alive _x} count _values
+	if(_mkr in subObjectives) exitWith {
+		{alive _x} count ((subObjectives get _mkr) select 0)
+	};
+	0
 };
 
 private _activeZoneLimit = 15;
@@ -17,6 +19,9 @@ if(trailState == "attacking") exitWith {};
 			_x setMarkerColor "ColorOpfor";
 		} else {
 			_x setMarkerColor "ColorBlue";
+			if(_x in subObjectives) then {
+				deleteMarker ((subObjectives get _x) select 1);
+			};
 		};
 		deleteGroup _y;
 		activeZones deleteAt _x;
@@ -38,7 +43,7 @@ if(count activeZones < _activeZoneLimit) then {
 	if(count activeZones < _civLimit) then {
 		_needCiviActivating = activeAreaMarkers select { 
 			_mrk = _x; 
-			(getMarkerColor _x) in ["ColorBlue", "ColorGreen"] AND !(_x in activeZones) AND (selectMin (allPlayers apply {_x distance2D (getMarkerPos _mrk)})) < 200 and (random 10) < 1
+			(getMarkerColor _x) in ["ColorGreen"] AND !(_x in activeZones) AND (selectMin (allPlayers apply {_x distance2D (getMarkerPos _mrk)})) < 200 and (random 10) < 1
 		};
 	};
 	if(((count activeZones) + (count _needActivating)) > _activeZoneLimit) then {
@@ -71,14 +76,6 @@ _needsDeactivatingKeys = (keys activeZones) select {
 	if(random 10 < 1) then {
 		_unit = _grp createUnit ["vn_o_men_nva_01", getMarkerPos _mkr, [], 50, "NONE"];
 		_unit spawn TR_fnc_addHostileIntelAction;
-	};
-	if(random 10 < 1 and count ((getMarkerPos _mkr) nearRoads 50) > 0) then {
-		_veh = [_mkr, 50,(["VC", "Car"] call TR_fnc_getUnits), true] call TR_fnc_spawnVehicle;
-		(crew _veh) join _grp;
-	};
-	if(random 10 < 1) then {
-		_veh = [_mkr, 50,(["VC", "turret"] call TR_fnc_getUnits), true] call TR_fnc_spawnVehicle;
-		(crew _veh) join _grp;
 	};
 	[units _grp] remoteExec ["TR_fnc_addToAllCurators", 2];
 	[_grp, (getMarkerPos _x) , 50, 3, 0.1, 0.1, true] call CBAEXT_fnc_taskDefend;

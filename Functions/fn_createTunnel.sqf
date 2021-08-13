@@ -13,7 +13,6 @@ _unit setVariable ['BIS_fnc_initModules_disableAutoActivation',true,true];
 // Now set the wanted tunnel
 _unit setvariable ["tunnel_position",_tunnelNo];
 
-[[_unit]] remoteExec ["TR_fnc_addToAllCurators", 2];
 tunnels pushBack _unit;
 
 // Call the init module function
@@ -21,7 +20,8 @@ tunnels pushBack _unit;
 
 // And finally spawn the units in your tunnel segments
 private _group = [_tunnels,EAST,20,['vn_o_men_vc_regional_01','vn_o_men_vc_regional_04 ']] call vn_fnc_tunnel_spawn_units;
-[units _group] remoteExec ["TR_fnc_addToAllCurators", 2];
+([units _group] + [_unit]) remoteExec ["TR_fnc_addToAllCurators", 2];
+_group enableDynamicSimulation true;
 
 
 units _group
