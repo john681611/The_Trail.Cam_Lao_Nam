@@ -88,7 +88,9 @@ private _unitMap = createHashMapFromArray ([
 				"vn_o_vc_static_dshkm_high_01", .5,
 				"vn_o_vc_static_dshkm_low_02", .5,
 				"vn_o_vc_static_pk_high", .5,
-				"vn_o_vc_static_rpd_high", .5
+				"vn_o_vc_static_rpd_high", .5,
+				"vn_o_vc_static_type56rr", .5,
+				"vn_o_nva_static_at3", .5
 		]],
 		["AA",[
 				"vn_o_nva_65_static_zpu4", .5,
